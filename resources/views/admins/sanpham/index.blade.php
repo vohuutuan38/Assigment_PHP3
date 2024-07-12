@@ -13,7 +13,7 @@
 
 @section('sidebar')
 <ul class="nav">
-    <li class="active ">
+    <li >
       <a href="javascript:;">
         <i class="nc-icon nc-bank"></i>
         <p>Home</p>
@@ -25,7 +25,7 @@
         <p>Danh Mục</p>
       </a>
     </li>
-    <li>
+    <li class="active ">
       <a href="javascript:;">
         <i class="nc-icon nc-app"></i>
         <p>Sản Phẩm</p>
@@ -48,7 +48,7 @@
 
 
 @section('content')
-<h3 class="description">Your content here</h3>
+<h3 class="description">Trang sản phẩm</h3>
 @endsection
 
 

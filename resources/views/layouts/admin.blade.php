@@ -23,7 +23,8 @@
         @include('admins.blocks.logo')
       </div>
       <div class="sidebar-wrapper">
-        @include('admins.blocks.sidebar')
+     
+        @yield('sidebar')
       </div>
     </div>
     <div class="main-panel" style="height: 100vh;">

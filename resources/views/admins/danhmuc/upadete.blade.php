@@ -13,13 +13,13 @@
 
 @section('sidebar')
 <ul class="nav">
-    <li class="active ">
+    <li >
       <a href="javascript:;">
         <i class="nc-icon nc-bank"></i>
         <p>Home</p>
       </a>
     </li>
-    <li >
+    <li class="active ">
       <a href="{{route('admin.danhmuc')}}">
         <i class="nc-icon nc-bullet-list-67"></i>
         <p>Danh Mục</p>
@@ -46,9 +46,8 @@
   </ul>
 @endsection
 
-
 @section('content')
-<h3 class="description">Your content here</h3>
+<h3 class="description">ĐÂY LÀ TRANG SỬA DANH MỤC</h3>
 @endsection
 
 

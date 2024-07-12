@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\admins\AdminController;
+use App\Http\Controllers\admins\DanhMucController;
+use App\Http\Controllers\admins\SanPhamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin',[AdminController::class,'index']);
-Route::get('/danhmuc',[AdminController::class,'danhmuc'])->name('admin.danhmuc');
+Route::get('/admin',[SanPhamController::class,'index']);
+Route::get('/danhmuc',[DanhMucController::class,'index'])->name('admin.danhmuc');

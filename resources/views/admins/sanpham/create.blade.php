@@ -11,9 +11,44 @@
 <link href="{{ asset('assets/admins/demo/demo.css') }}" rel="stylesheet" />
 @endsection
 
+@section('sidebar')
+<ul class="nav">
+    <li >
+      <a href="javascript:;">
+        <i class="nc-icon nc-bank"></i>
+        <p>Home</p>
+      </a>
+    </li>
+    <li >
+      <a href="{{route('admin.danhmuc')}}">
+        <i class="nc-icon nc-bullet-list-67"></i>
+        <p>Danh Mục</p>
+      </a>
+    </li>
+    <li class="active ">
+      <a href="javascript:;">
+        <i class="nc-icon nc-app"></i>
+        <p>Sản Phẩm</p>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;">
+        <i class="nc-icon nc-circle-10"></i>
+        <p>Tài Khoản</p>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;">
+        <i class="nc-icon nc-cart-simple"></i>
+        <p>Đơn hàng</p>
+      </a>
+    </li>
+  </ul>
+@endsection
+
 
 @section('content')
-<h3 class="description">ĐÂY LÀ TRANG DANH MỤC</h3>
+<h3 class="description">Trang thêm sản phẩm</h3>
 @endsection
 
 
