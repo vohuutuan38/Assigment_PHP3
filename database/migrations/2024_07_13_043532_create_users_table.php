@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('anh_dai_dien')->nullable();
+            $table->string('anh_dai_dien')->default('/uploads/avatar.png');
             $table->string('ho_ten', 50);
             $table->string('email');
             $table->string('so_dien_thoai');
-            $table->string('gioi_tinh');
+            $table->enum('gioi_tinh', ['Nam', 'Nu', 'Khac'])->default('Khac');
             $table->string('dia_chi');
             $table->date('ngay_sinh');
             $table->string('mat_khau');
