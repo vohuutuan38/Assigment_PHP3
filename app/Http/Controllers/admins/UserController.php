@@ -62,6 +62,11 @@ class UserController extends Controller
                 'gioi_tinh.required' => 'Chưa chọn giới tính',
             ]
         );
+        if ($request->hasFile('anh_dai_dien')) {
+            $img = $request->file('anh_dai_dien');
+            $path = $img->store('/uploads');
+            $data['anh_dai_dien'] = $path;
+        }
         $this->table->createUser($data);
         return redirect()->route('user.index')->with('success', 'Thêm thành công');
     }

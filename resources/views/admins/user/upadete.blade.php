@@ -5,9 +5,6 @@
 @endsection
 @section('css')
     <style>
-        .main-panel {
-            height: 115vh !important;
-        }
 
         .main-panel {
             height: auto !important;
