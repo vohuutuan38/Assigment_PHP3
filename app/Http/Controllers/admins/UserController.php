@@ -64,7 +64,7 @@ class UserController extends Controller
         );
         if ($request->hasFile('anh_dai_dien')) {
             $img = $request->file('anh_dai_dien');
-            $path = $img->store('/uploads');
+            $path = $img->store('/uploads', 'public');
             $data['anh_dai_dien'] = $path;
         }
         $this->table->createUser($data);
