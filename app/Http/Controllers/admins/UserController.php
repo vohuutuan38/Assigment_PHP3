@@ -30,7 +30,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $data = [];
+        $data['title'] = "Trang thêm tài khoản Admin";
+        return view('admins.user.create', $data);
     }
 
     /**
@@ -38,7 +40,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate(
+            [
+                'ho_ten' => 'required',
+                'email' => 'required',
+                'so_dien_thoai' => 'required',
+                'mat_khau' => 'required',
+                'dia_chi' => 'required',
+                'ngay_sinh' => 'required',
+                'chuc_vu_id' => 'required',
+                'gioi_tinh' => 'required',
+            ],
+            [
+                'ho_ten.required' => 'Chưa nhập họ tên',
+                'email.required' => 'Chưa nhập email',
+                'dia_chi.required' => 'Chưa nhập địa chỉ',
+                'so_dien_thoai.required' => 'Chưa nhập số điện thoại',
+                'mat_khau.required' => 'Chưa nhập mật khẩu',
+                'ngay_sinh.required' => 'Chưa nhập ngày sinh',
+                'chuc_vu_id.required' => 'Chưa chọn chức vụ',
+                'gioi_tinh.required' => 'Chưa chọn giới tính',
+            ]
+        );
+        $this->table->createUser($data);
+        return redirect()->route('user.index')->with('success', 'Thêm thành công');
     }
 
     /**

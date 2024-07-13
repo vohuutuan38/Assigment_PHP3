@@ -20,7 +20,6 @@ class User extends Authenticatable
     function createUser($arr)
     {
         DB::table('users')->insert($arr);
-        return redirect()->route('user.index')->with('sessces', 'Thêm thành công');
     }
     function showUser($id)
     {

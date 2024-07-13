@@ -7,6 +7,7 @@
 @endsection
 @section('content')
     <h3 class="description">{{ $title }}</h3>
+    <a href="{{ route('user.create') }}" class="btn btn-success">Thêm Admin</a>
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
