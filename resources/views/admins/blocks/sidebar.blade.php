@@ -1,6 +1,6 @@
 <ul class="nav">
     <li @if (request()->path() == 'admin') class="active " @endif>
-        <a href="javascript:;">
+        <a href="admin">
             <i class="nc-icon nc-bank"></i>
             <p>Home</p>
         </a>
@@ -12,13 +12,13 @@
         </a>
     </li>
     <li @if (request()->path() == 'sanpham') class="active " @endif>
-        <a href="javascript:;">
+        <a href="">
             <i class="nc-icon nc-app"></i>
             <p>Sản Phẩm</p>
         </a>
     </li>
     <li @if (request()->path() == 'user') class="active " @endif>
-        <a href="javascript:;">
+        <a href="{{ route('user.index') }}">
             <i class="nc-icon nc-circle-10"></i>
             <p>Tài Khoản</p>
         </a>
