@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_tai_khoans', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('anh_dai_dien')->nullable();
             $table->string('ho_ten', 50);
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->boolean('trang_thai')->default(0);
             $table->timestamps();
 
-            $table->foreign('chuc_vu_id')->references('id')->on('tb_chuc_vus');
+            $table->foreign('chuc_vu_id')->references('id')->on('chuc_vus');
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_tai_khoans');
+        Schema::dropIfExists('users');
     }
 };

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_san_phams', function (Blueprint $table) {
+        Schema::create('san_phams', function (Blueprint $table) {
             $table->id();
             $table->string('ten_san_pham');
             $table->integer('so_luong');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('trang_thai')->default(0);
             $table->timestamps();
 
-            $table->foreign('danh_muc_id')->references('id')->on('tb_danh_mucs')->onDelete('cascade');
+            $table->foreign('danh_muc_id')->references('id')->on('danh_mucs')->onDelete('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_san_phams');
+        Schema::dropIfExists('san_phams');
     }
 };
