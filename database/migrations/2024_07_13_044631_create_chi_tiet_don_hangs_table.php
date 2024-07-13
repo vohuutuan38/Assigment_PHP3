@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_chi_tiet_don_hangs', function (Blueprint $table) {
+        Schema::create('chi_tiet_don_hangs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('don_hang_id');
             $table->unsignedBigInteger('san_pham_id');
@@ -20,8 +20,8 @@ return new class extends Migration
             $table->double('thanh_tien', 12, 2);
             $table->timestamps();
 
-            $table->foreign('don_hang_id')->references('id')->on('tb_don_hangs');
-            $table->foreign('san_pham_id')->references('id')->on('tb_san_phams');
+            $table->foreign('don_hang_id')->references('id')->on('don_hangs');
+            $table->foreign('san_pham_id')->references('id')->on('san_phams');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_chi_tiet_don_hangs');
+        Schema::dropIfExists('chi_tiet_don_hangs');
     }
 };

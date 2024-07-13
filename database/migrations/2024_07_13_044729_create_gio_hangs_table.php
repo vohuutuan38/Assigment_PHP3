@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_gio_hangs', function (Blueprint $table) {
+        Schema::create('gio_hangs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('nguoi_dung_id');
             $table->timestamps();
 
-            $table->foreign('nguoi_dung_id')->references('id')->on('tb_tai_khoans')->onDelete('cascade');
+            $table->foreign('nguoi_dung_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_gio_hangs');
+        Schema::dropIfExists('gio_hangs');
     }
 };
