@@ -5,7 +5,7 @@ use App\Http\Controllers\admins\UserController;
 use App\Http\Controllers\admins\DanhMucController;
 use App\Http\Controllers\admins\SanPhamController;
 use App\Models\DanhMuc;
-
+use App\Http\Controllers\admins\ChucVuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +25,4 @@ Route::get('/', function () {
 Route::resource('danhmuc', DanhMucController::class);
 Route::resource('sanpham',SanPhamController::class);
 Route::resource('user', UserController::class);
+Route::resource('chucvu', ChucVuController::class);

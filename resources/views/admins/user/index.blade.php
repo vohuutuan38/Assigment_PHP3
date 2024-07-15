@@ -4,6 +4,11 @@
     ADMIN
 @endsection
 @section('css')
+    <style>
+        .main-panel {
+            height: auto !important;
+        }
+    </style>
 @endsection
 @section('content')
     <h3 class="description">{{ $title }}</h3>
@@ -34,7 +39,7 @@
             @foreach ($data as $item)
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
-                    <td><img src="{{ $item->anh_dai_dien }}" alt="Ảnh đại diện" width="50" height="50"></td>
+                    <td><img src="storage/{{ $item->anh_dai_dien }}" alt="Ảnh đại diện" width="50" height="50"></td>
                     <td>{{ $item->ho_ten }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->so_dien_thoai }}</td>

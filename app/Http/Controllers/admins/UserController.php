@@ -62,6 +62,11 @@ class UserController extends Controller
                 'gioi_tinh.required' => 'Chưa chọn giới tính',
             ]
         );
+        if ($request->hasFile('anh_dai_dien')) {
+            $img = $request->file('anh_dai_dien');
+            $path = $img->store('/uploads', 'public');
+            $data['anh_dai_dien'] = $path;
+        }
         $this->table->createUser($data);
         return redirect()->route('user.index')->with('success', 'Thêm thành công');
     }
@@ -79,7 +84,12 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        dd($id);
+        $data = [];
+        $data['data'] = $this->table->showUser($id);
+        $data['title'] = "Trang thêm tài khoản Admin";
+        $data['quyen'] = $this->table->getChucVu();
+        // dd($data);  
+        return view('admins.user.update', $data);
     }
 
     /**
@@ -87,6 +97,35 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $data = $request->validate(
+            [
+                'ho_ten' => 'required',
+                'email' => 'required',
+                'so_dien_thoai' => 'required',
+                'mat_khau' => 'required',
+                'dia_chi' => 'required',
+                'ngay_sinh' => 'required',
+                'chuc_vu_id' => 'required',
+                'gioi_tinh' => 'required',
+            ],
+            [
+                'ho_ten.required' => 'Chưa nhập họ tên',
+                'email.required' => 'Chưa nhập email',
+                'dia_chi.required' => 'Chưa nhập địa chỉ',
+                'so_dien_thoai.required' => 'Chưa nhập số điện thoại',
+                'mat_khau.required' => 'Chưa nhập mật khẩu',
+                'ngay_sinh.required' => 'Chưa nhập ngày sinh',
+                'chuc_vu_id.required' => 'Chưa chọn chức vụ',
+                'gioi_tinh.required' => 'Chưa chọn giới tính',
+            ]
+        );
+        if ($request->hasFile('anh_dai_dien')) {
+            $img = $request->file('anh_dai_dien');
+            $path = $img->store('/uploads', 'public');
+            $data['anh_dai_dien'] = $path;
+        }
+        $this->table->updateUser($data, $id);
+        return redirect()->route('user.index')->with('success', 'Cập nhập thành công');
     }
 
     /**
