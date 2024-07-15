@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admins\UserController;
 use App\Http\Controllers\admins\DanhMucController;
 use App\Http\Controllers\admins\SanPhamController;
+use App\Http\Controllers\admins\ChucVuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::get('/', function () {
 Route::get('/admin', [SanPhamController::class, 'index']);
 Route::get('/danhmuc', [DanhMucController::class, 'index'])->name('admin.danhmuc');
 Route::resource('user', UserController::class);
+Route::resource('chucvu', ChucVuController::class);

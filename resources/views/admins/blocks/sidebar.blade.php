@@ -17,6 +17,12 @@
             <p>Sản Phẩm</p>
         </a>
     </li>
+    <li @if (request()->path() == 'chucvu') class="active " @endif>
+        <a href="{{ route('chucvu.index') }}">
+            <i class="nc-icon nc-circle-10"></i>
+            <p>Chức Vụ</p>
+        </a>
+    </li>
     <li @if (request()->path() == 'user') class="active " @endif>
         <a href="{{ route('user.index') }}">
             <i class="nc-icon nc-circle-10"></i>

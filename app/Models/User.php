@@ -25,11 +25,14 @@ class User extends Authenticatable
     {
         return $data = DB::table('users')->where('id', $id)->get();
     }
+    function getChucVu()
+    {
+        return $data = DB::table('chuc_vus')->get();
+    }
     function updateUser($arr, $id)
     {
         DB::table('users')->where('id', $id)
             ->update($arr);
-        return redirect()->route('user.index')->with('sessces', 'Cập nhập thành công');
     }
     function deleteUser($id)
     {
