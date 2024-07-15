@@ -6,13 +6,13 @@
         </a>
     </li>
     <li @if (request()->path() == 'danhmuc') class="active " @endif>
-        <a href="{{ route('admin.danhmuc') }}">
+        <a href="{{ route('danhmuc.index') }}">
             <i class="nc-icon nc-bullet-list-67"></i>
             <p>Danh Mục</p>
         </a>
     </li>
     <li @if (request()->path() == 'sanpham') class="active " @endif>
-        <a href="">
+        <a href="{{ route('sanpham.index') }}">
             <i class="nc-icon nc-app"></i>
             <p>Sản Phẩm</p>
         </a>

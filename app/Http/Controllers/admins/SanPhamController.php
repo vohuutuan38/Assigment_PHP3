@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admins;
 
 use App\Http\Controllers\Controller;
+use App\Models\DanhMuc;
+use App\Models\SanPham;
 use Illuminate\Http\Request;
 
 class SanPhamController extends Controller
@@ -10,18 +12,23 @@ class SanPhamController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(SanPham $sanPham ,DanhMuc $danhmuc)
     {
-        //
-        return view('admins.sanpham.index');
+        
+        $sanpham = SanPham::join('danh_mucs','san_phams.danh_muc_id','=','danh_mucs.id')
+                            ->select('san_phams.*','ten_danh_muc')
+                            ->get();
+
+        return view('admins.sanpham.index',compact('sanpham'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(DanhMuc $danhmuc)
     {
-        //
+        $danhmuc = DanhMuc::all();
+        return view('admins.sanpham.create',compact('danhmuc'));
     }
 
     /**
@@ -29,7 +36,9 @@ class SanPhamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        SanPham::create($request->all());
+        return redirect()->route('sanpham.index')->with('thongbao','Thêm sản phẩm thành công');
     }
 
     /**
@@ -43,24 +52,29 @@ class SanPhamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(SanPham $sanpham, DanhMuc $danhmuc)
     {
-        //
+
+          $danhmuc = DanhMuc::all();
+        return view('admins.sanpham.update',compact('sanpham','danhmuc',));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, SanPham $sanpham)
     {
-        //
+        $sanpham->update($request->all());
+       return redirect()->route('sanpham.index')->with('thongbao','Cập nhật sản phẩm thành công');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(SanPham $sanpham)
     {
-        //
+        $sanpham->delete();
+        return redirect()->route('sanpham.index')->with('thongbao','Xóa Sản phẩm thành công');
     }
 }

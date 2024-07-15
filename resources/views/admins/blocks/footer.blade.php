@@ -9,7 +9,7 @@
       </nav>
       <div class="credits ml-auto">
         <span class="copyright">
-          Assigment, made with <i class="fa fa-heart heart"></i> by wd18316
+          {{-- Assigment, made with <i class="fa fa-heart heart"></i> by wd18316 --}}
         </span>
       </div>
     </div>
