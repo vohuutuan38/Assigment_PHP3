@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admins;
 
 use App\Http\Controllers\Controller;
+use App\Models\ChucVu;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class UserController extends Controller
     {
         $this->table = new User();
     }
-    public function index()
+    public function index(ChucVu $chucVu)
     {
         $data = [];
         $data['data'] = $this->table->listUser();

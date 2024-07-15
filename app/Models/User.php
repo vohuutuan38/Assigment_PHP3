@@ -15,7 +15,7 @@ class User extends Authenticatable
     protected $table = 'users';
     function listUser()
     {
-        return $data = DB::table('users')->get();
+        return $data = DB::table('users')->join('chuc_vus', 'chuc_vus.id', 'users.chuc_vu_id')->get();
     }
     function createUser($arr)
     {

@@ -47,7 +47,7 @@
                     <td>{{ $item->dia_chi }}</td>
                     <td>{{ $item->ngay_sinh }}</td>
                     <td>{{ $item->mat_khau }}</td>
-                    <td>{{ $item->chuc_vu_id }}</td>
+                    <td>{{ $item->ten_chuc_vu }}</td>
                     <td>{{ $item->trang_thai == 1 ? 'Hoạt động' : 'Không hoạt động' }}</td>
                     <td>
                         <a href="{{ route('user.edit', $item->id) }}" class="btn btn-warning">Sửa</a>
