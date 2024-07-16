@@ -15,7 +15,7 @@ class User extends Authenticatable
     protected $table = 'users';
     function listUser()
     {
-        return $data = DB::table('users')->get();
+        return $data = DB::table('users')->join('chuc_vus', 'chuc_vus.id', 'users.chuc_vu_id')->get();
     }
     function createUser($arr)
     {
@@ -25,11 +25,14 @@ class User extends Authenticatable
     {
         return $data = DB::table('users')->where('id', $id)->get();
     }
+    function getChucVu()
+    {
+        return $data = DB::table('chuc_vus')->get();
+    }
     function updateUser($arr, $id)
     {
         DB::table('users')->where('id', $id)
             ->update($arr);
-        return redirect()->route('user.index')->with('sessces', 'Cập nhập thành công');
     }
     function deleteUser($id)
     {

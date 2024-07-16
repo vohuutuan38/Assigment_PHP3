@@ -6,7 +6,8 @@ use App\Http\Controllers\admins\UserController;
 use App\Http\Controllers\admins\DanhMucController;
 use App\Http\Controllers\admins\SanPhamController;
 use App\Http\Controllers\admins\BinhLuanController;
-
+use App\Models\DanhMuc;
+use App\Http\Controllers\admins\ChucVuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +28,4 @@ Route::resource('danhmuc', DanhMucController::class);
 Route::resource('sanpham',SanPhamController::class);
 Route::resource('user', UserController::class);
 Route::resource('binhluan', BinhLuanController::class);
+Route::resource('chucvu', ChucVuController::class);
