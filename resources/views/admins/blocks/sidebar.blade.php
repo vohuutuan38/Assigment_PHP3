@@ -23,6 +23,12 @@
             <p>Tài Khoản</p>
         </a>
     </li>
+    <li @if (request()->path() == 'binhluan') class="active " @endif>
+        <a href="{{ route('binhluan.index') }}">
+            <i class="fa-regular fa-comment"></i>
+            <p>Bình luận</p>
+        </a>
+    </li>
     <li @if (request()->path() == 'donhang') class="active " @endif>
         <a href="javascript:;">
             <i class="nc-icon nc-cart-simple"></i>

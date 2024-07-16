@@ -16,10 +16,12 @@ class ChucVuSeeder extends Seeder
         DB::table('chuc_vus')->insert(
             [
                 [
+                    'id' => 1,
                     'ten_chuc_vu' => 'Admin',
                 ],
                 [
-                    'ten_chuc_vu' => 'User',
+                    'id' => 2,
+                    'ten_chuc_vu' => 'User'
                 ],
             ]
         );
