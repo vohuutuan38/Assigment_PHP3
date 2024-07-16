@@ -6,7 +6,6 @@ use App\Http\Controllers\admins\UserController;
 use App\Http\Controllers\admins\DanhMucController;
 use App\Http\Controllers\admins\SanPhamController;
 use App\Http\Controllers\admins\BinhLuanController;
-use App\Models\DanhMuc;
 use App\Http\Controllers\admins\ChucVuController;
 /*
 |--------------------------------------------------------------------------
