@@ -15,7 +15,9 @@ class User extends Authenticatable
     protected $table = 'users';
     function listUser()
     {
-        return $data = DB::table('users')->join('chuc_vus', 'chuc_vus.id', 'users.chuc_vu_id')->get();
+        return $data = DB::table('users')->join('chuc_vus', 'chuc_vus.id', 'users.chuc_vu_id')
+            ->select('users.*', 'chuc_vus.ten_chuc_vu')
+            ->get();
     }
     function createUser($arr)
     {
@@ -43,22 +45,34 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    // protected $fillable = [
-    //     'name',
-    //     'email',
-    //     'password',
-    // ];
+    protected $fillable = [
+        'id',
+        'anh_dai_dien',
+        'ho_ten',
+        'email',
+        'so_dien_thoai',
+        'gioi_tinh',
+        'dia_chi',
+        'ngay_sinh',
+        'password',
+        'trang_thai',
+
+    ];
 
     // /**
     //  * The attributes that should be hidden for serialization.
     //  *
     //  * @var array<int, string>
     //  */
-    // protected $hidden = [
-    //     'password',
-    //     'remember_token',
-    // ];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
+    function chucVu()
+    {
+        return $this->belongsTo(ChucVu::class);
+    }
     // /**
     //  * The attributes that should be cast.
     //  *

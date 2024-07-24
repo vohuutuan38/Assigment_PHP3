@@ -55,7 +55,7 @@
         </div>
         <div class="form-group">
             <label>Mật khẩu</label>
-            <input type="text" name="mat_khau" class="form-control" placeholder="Mật khẩu">
+            <input type="text" name="password" class="form-control" placeholder="Mật khẩu">
         </div>
         <div class="form-group">
             <label>Ngày nhập</label>

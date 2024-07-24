@@ -9,6 +9,7 @@ class ChucVu extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'ten_chuc_vu'
+        'ten_chuc_vu',
+        'id'
     ];
 }
