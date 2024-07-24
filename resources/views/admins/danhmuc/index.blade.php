@@ -33,7 +33,7 @@
 
     <tr>
       <th scope="row">{{ $dm->id }}</th>
-      <td><img src="{{ $dm->hinh_anh }}" alt=""></td>
+      <td><img src="{{Storage::url( $dm->hinh_anh)  }}" alt="" width="100px"></td>
       <td>{{ $dm->ten_danh_muc }}</td>
       <td>{{ $dm->mo_ta }}</td>
       <td>

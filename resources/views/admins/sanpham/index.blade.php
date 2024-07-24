@@ -23,6 +23,7 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Tên Sản Phẩm</th>
+      <th scope="col">Ảnh Sản Phẩm</th>
       <th scope="col">Số Lượng</th>
       <th scope="col">Giá Sản Phẩm</th>
       <th scope="col">Giá Khuyến Mãi</th>
@@ -38,6 +39,7 @@
    <tr>
     <th scope="row">{{$sp->id}}</th>
     <td>{{$sp->ten_san_pham}}</td>
+    <td><img src="{{ Storage::url( $sp->link_anh)  }}" alt="" width="100px"></td>
     <td>{{$sp->so_luong}}</td>
     <td>{{$sp->gia_san_pham}}</td>
     <td>{{$sp->gia_khuyen_mai}}</td>

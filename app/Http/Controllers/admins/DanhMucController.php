@@ -28,13 +28,24 @@ class DanhMucController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        // dd($request);
-        // if()
-        DanhMuc::create($request->all());
-        return redirect()->route('danhmuc.index')->with('thongbao','Thêm sản phẩm thành công');
+    public function store(Request $request){
+
+    if ($request->isMethod('POST')) {
+
+        $params = $request->except('_token');
+
+        if ($request->hasFile('hinh_anh')) {
+           $filename =$request->file('hinh_anh')->store('uploads/danhmuc','public');
+        } else {
+            $filename = null;
+        }
+
+        $params['hinh_anh'] = $filename;
+
+        DanhMuc::create($params);
+        return redirect()->route('danhmuc.index')->with('thongbao', 'Thêm sản phẩm thành công');
     }
+}
 
     /**
      * Display the specified resource.

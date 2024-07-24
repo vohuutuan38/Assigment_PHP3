@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admins;
 
 use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
+use App\Models\HinhAnhSanPham;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
 
@@ -16,9 +17,11 @@ class SanPhamController extends Controller
     {
         
         $sanpham = SanPham::join('danh_mucs','san_phams.danh_muc_id','=','danh_mucs.id')
+                            // ->join('hinh_anh_san_phams','san_phams.id','=','hinh_anh_san_phams.san_pham_id')
                             ->select('san_phams.*','ten_danh_muc')
                             ->get();
-
+        
+        //   dd($sanpham);
         return view('admins.sanpham.index',compact('sanpham'));
     }
 
@@ -27,7 +30,9 @@ class SanPhamController extends Controller
      */
     public function create(DanhMuc $danhmuc)
     {
+
         $danhmuc = DanhMuc::all();
+
         return view('admins.sanpham.create',compact('danhmuc'));
     }
 
@@ -36,10 +41,29 @@ class SanPhamController extends Controller
      */
     public function store(Request $request)
     {
-        
-        SanPham::create($request->all());
+        if ($request->isMethod('POST')) {
+
+            $params = $request->except('_token');
+
+            if ($request->hasFile('link_anh')) {
+                $filename =$request->file('link_anh')->store('uploads/sanpham','public');
+             } else {
+                 $filename = null;
+             }
+     
+          
+        SanPham::create($params);
+
+        HinhAnhSanPham::create([
+         'san_pham_id' => $request->input('id'),
+         'link_anh' => $filename,
+        ]);
+       
         return redirect()->route('sanpham.index')->with('thongbao','Thêm sản phẩm thành công');
+
+
     }
+}
 
     /**
      * Display the specified resource.
@@ -54,7 +78,7 @@ class SanPhamController extends Controller
      */
     public function edit(SanPham $sanpham, DanhMuc $danhmuc)
     {
-
+          
           $danhmuc = DanhMuc::all();
         return view('admins.sanpham.update',compact('sanpham','danhmuc',));
     }

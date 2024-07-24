@@ -24,7 +24,6 @@ return new class extends Migration
             $table->unsignedBigInteger('chuc_vu_id');
             $table->boolean('trang_thai')->default(0);
             $table->timestamps();
-
             $table->foreign('chuc_vu_id')->references('id')->on('chuc_vus');
         });
     }
