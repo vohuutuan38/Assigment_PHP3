@@ -13,11 +13,11 @@
 
 @section('content')
 <h3 class="text-center mb-0">Trang thêm sản phẩm</h3>
-<form action="{{ route('sanpham.store') }}" method="POST">
+<form action="{{ route('sanpham.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label class="form-label">ID</label>
-        <input type="text" name="id" class="form-control" disabled>
+        <input type="text" name="id" class="form-control" >
       </div>
     <div class="mb-3">
         <label class="form-label">Tên Sản Phẩm</label>
@@ -61,7 +61,10 @@
         <input type="radio" name="trang_thai" value="1">
         <label class="form-check-label" for="admin_checkbox">Hết hàng</label>
     </div>
-      
+    <div class="mb-3">
+      <label class="form-label">Ảnh Sản Phẩm</label>
+      <input type="file" name="link_anh" class="form-control" >
+    </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary ">Submit</button>
       </div>
