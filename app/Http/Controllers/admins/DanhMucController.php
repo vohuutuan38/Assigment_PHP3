@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\admins;
 
-use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DanhMucController extends Controller
 {
@@ -60,15 +61,32 @@ class DanhMucController extends Controller
      */
     public function edit(DanhMuc $danhmuc)
     {
+
         return view('admins.danhmuc.update',compact('danhmuc'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DanhMuc $danhmuc)
+    public function update(Request $request,string $id)
     {
-        $danhmuc->update($request->all());
+        $params = $request->all();
+
+        $danhMuc = DanhMuc::query()->findOrFail($id);
+        if ($request->hasFile('hinh_anh') && Storage::disk('public')->exists($danhMuc->hinh_anh) ) {
+            // kiểm tra trong database có ảnh không và kiểm tra trong thư mục public
+            // nếu người dùng đẩy hình ảnh mới thì xóa hình ảnh cũ
+            if ($danhMuc->hinh_anh) {
+                Storage::disk('public')->delete($danhMuc->hinh_anh);
+            }
+            // thêm ảnh mới
+            $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanpham', 'public');
+        } else {
+            $params['hinh_anh'] = $danhMuc->hinh_anh;
+        }
+        
+        $danhMuc->update($params);
+
        return redirect()->route('danhmuc.index')->with('thongbao','Cập nhật danh mục thành công');
     }
 

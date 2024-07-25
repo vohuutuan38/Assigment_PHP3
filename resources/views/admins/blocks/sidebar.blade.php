@@ -1,6 +1,6 @@
 <ul class="nav">
     <li @if (request()->path() == 'admin') class="active " @endif>
-        <a href="admin">
+        <a href="#">
             <i class="nc-icon nc-bank"></i>
             <p>Home</p>
         </a>
