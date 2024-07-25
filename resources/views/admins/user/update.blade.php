@@ -59,8 +59,7 @@
         </div>
         <div class="form-group">
             <label>Mật khẩu</label>
-            <input type="number" name="mat_khau" class="form-control" value="{{ $data[0]->mat_khau }}"
-                placeholder="Tên sản phẩm">
+            <input type="text" name="password" class="form-control" placeholder="**************">
         </div>
         <div class="form-group">
             <label>Ngày nhập</label>

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\admins;
 
-use App\Http\Controllers\Controller;
-use App\Models\ChucVu;
 use App\Models\User;
+use App\Models\ChucVu;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -17,7 +20,7 @@ class UserController extends Controller
     {
         $this->table = new User();
     }
-    public function index(ChucVu $chucVu)
+    public function index()
     {
         $data = [];
         $data['data'] = $this->table->listUser();
@@ -46,7 +49,7 @@ class UserController extends Controller
                 'ho_ten' => 'required',
                 'email' => 'required',
                 'so_dien_thoai' => 'required',
-                'mat_khau' => 'required',
+                'password' => 'required',
                 'dia_chi' => 'required',
                 'ngay_sinh' => 'required',
                 'chuc_vu_id' => 'required',
@@ -57,7 +60,7 @@ class UserController extends Controller
                 'email.required' => 'Chưa nhập email',
                 'dia_chi.required' => 'Chưa nhập địa chỉ',
                 'so_dien_thoai.required' => 'Chưa nhập số điện thoại',
-                'mat_khau.required' => 'Chưa nhập mật khẩu',
+                'password.required' => 'Chưa nhập mật khẩu',
                 'ngay_sinh.required' => 'Chưa nhập ngày sinh',
                 'chuc_vu_id.required' => 'Chưa chọn chức vụ',
                 'gioi_tinh.required' => 'Chưa chọn giới tính',
@@ -68,6 +71,7 @@ class UserController extends Controller
             $path = $img->store('/uploads', 'public');
             $data['anh_dai_dien'] = $path;
         }
+        $data["password"] = Hash::make($data["password"]);
         $this->table->createUser($data);
         return redirect()->route('user.index')->with('success', 'Thêm thành công');
     }
@@ -85,6 +89,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+
         $data = [];
         $data['data'] = $this->table->showUser($id);
         $data['title'] = "Trang thêm tài khoản Admin";
@@ -103,7 +108,6 @@ class UserController extends Controller
                 'ho_ten' => 'required',
                 'email' => 'required',
                 'so_dien_thoai' => 'required',
-                'mat_khau' => 'required',
                 'dia_chi' => 'required',
                 'ngay_sinh' => 'required',
                 'chuc_vu_id' => 'required',
@@ -114,16 +118,25 @@ class UserController extends Controller
                 'email.required' => 'Chưa nhập email',
                 'dia_chi.required' => 'Chưa nhập địa chỉ',
                 'so_dien_thoai.required' => 'Chưa nhập số điện thoại',
-                'mat_khau.required' => 'Chưa nhập mật khẩu',
                 'ngay_sinh.required' => 'Chưa nhập ngày sinh',
                 'chuc_vu_id.required' => 'Chưa chọn chức vụ',
                 'gioi_tinh.required' => 'Chưa chọn giới tính',
             ]
         );
+        if ($request->only('password')) {
+            $data['password'] = $request->input('password');
+            // dd($data['password']);
+            $data['password'] = Hash::make($data['password']);
+        }
+        $oldImg = User::find($id);
         if ($request->hasFile('anh_dai_dien')) {
+
             $img = $request->file('anh_dai_dien');
             $path = $img->store('/uploads', 'public');
             $data['anh_dai_dien'] = $path;
+            if ($oldImg->anh_dai_dien != '/uploads/avatar.png') {
+                Storage::disk('public')->delete($oldImg->anh_dai_dien);
+            }
         }
         $this->table->updateUser($data, $id);
         return redirect()->route('user.index')->with('success', 'Cập nhập thành công');
@@ -134,6 +147,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        $oldImg = User::find($id);
+        if ($oldImg->anh_dai_dien != '/uploads/avatar.png') {
+            Storage::disk('public')->delete($oldImg->anh_dai_dien);
+        }
         $this->table->deleteUser($id);
         return redirect()->route('user.index')->with('success', 'Xóa thành công');
     }

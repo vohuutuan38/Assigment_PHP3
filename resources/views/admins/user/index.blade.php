@@ -29,7 +29,6 @@
                 <th scope="col">Giới tính</th>
                 <th scope="col">Địa chỉ</th>
                 <th scope="col">Ngày sinh</th>
-                <th scope="col">Mật khẩu</th>
                 <th scope="col">Chức vụ</th>
                 <th scope="col">Trạng thái</th>
                 <th scope="col">Thao tác</th>
@@ -46,7 +45,6 @@
                     <td>{{ $item->gioi_tinh }}</td>
                     <td>{{ $item->dia_chi }}</td>
                     <td>{{ $item->ngay_sinh }}</td>
-                    <td>{{ $item->mat_khau }}</td>
                     <td>{{ $item->ten_chuc_vu }}</td>
                     <td>{{ $item->trang_thai == 1 ? 'Hoạt động' : 'Không hoạt động' }}</td>
                     <td>

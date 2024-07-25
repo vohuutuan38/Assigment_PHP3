@@ -13,16 +13,16 @@ class SanPhamController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(SanPham $sanPham ,DanhMuc $danhmuc)
+    public function index(SanPham $sanPham, DanhMuc $danhmuc)
     {
-        
-        $sanpham = SanPham::join('danh_mucs','san_phams.danh_muc_id','=','danh_mucs.id')
-                            // ->join('hinh_anh_san_phams','san_phams.id','=','hinh_anh_san_phams.san_pham_id')
-                            ->select('san_phams.*','ten_danh_muc')
-                            ->get();
-        
+
+        $sanpham = SanPham::join('danh_mucs', 'san_phams.danh_muc_id', '=', 'danh_mucs.id')
+            // ->join('hinh_anh_san_phams', 'san_phams.id', '=', 'hinh_anh_san_phams.san_pham_id')
+            ->select('san_phams.*', 'ten_danh_muc')
+            ->get();
+
         //   dd($sanpham);
-        return view('admins.sanpham.index',compact('sanpham'));
+        return view('admins.sanpham.index', compact('sanpham'));
     }
 
     /**
@@ -33,7 +33,7 @@ class SanPhamController extends Controller
 
         $danhmuc = DanhMuc::all();
 
-        return view('admins.sanpham.create',compact('danhmuc'));
+        return view('admins.sanpham.create', compact('danhmuc'));
     }
 
     /**
@@ -46,24 +46,22 @@ class SanPhamController extends Controller
             $params = $request->except('_token');
 
             if ($request->hasFile('link_anh')) {
-                $filename =$request->file('link_anh')->store('uploads/sanpham','public');
-             } else {
-                 $filename = null;
-             }
-     
-          
-        SanPham::create($params);
-
-        HinhAnhSanPham::create([
-         'san_pham_id' => $request->input('id'),
-         'link_anh' => $filename,
-        ]);
-       
-        return redirect()->route('sanpham.index')->with('thongbao','Thêm sản phẩm thành công');
+                $filename = $request->file('link_anh')->store('uploads/sanpham', 'public');
+            } else {
+                $filename = null;
+            }
 
 
+            SanPham::create($params);
+
+            HinhAnhSanPham::create([
+                'san_pham_id' => $request->input('id'),
+                'link_anh' => $filename,
+            ]);
+
+            return redirect()->route('sanpham.index')->with('thongbao', 'Thêm sản phẩm thành công');
+        }
     }
-}
 
     /**
      * Display the specified resource.
@@ -78,9 +76,9 @@ class SanPhamController extends Controller
      */
     public function edit(SanPham $sanpham, DanhMuc $danhmuc)
     {
-          
-          $danhmuc = DanhMuc::all();
-        return view('admins.sanpham.update',compact('sanpham','danhmuc',));
+
+        $danhmuc = DanhMuc::all();
+        return view('admins.sanpham.update', compact('sanpham', 'danhmuc',));
     }
 
     /**
@@ -89,8 +87,7 @@ class SanPhamController extends Controller
     public function update(Request $request, SanPham $sanpham)
     {
         $sanpham->update($request->all());
-       return redirect()->route('sanpham.index')->with('thongbao','Cập nhật sản phẩm thành công');
-
+        return redirect()->route('sanpham.index')->with('thongbao', 'Cập nhật sản phẩm thành công');
     }
 
     /**
@@ -99,6 +96,6 @@ class SanPhamController extends Controller
     public function destroy(SanPham $sanpham)
     {
         $sanpham->delete();
-        return redirect()->route('sanpham.index')->with('thongbao','Xóa Sản phẩm thành công');
+        return redirect()->route('sanpham.index')->with('thongbao', 'Xóa Sản phẩm thành công');
     }
 }
