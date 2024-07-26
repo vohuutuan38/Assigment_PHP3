@@ -21,7 +21,7 @@ use App\Http\Controllers\auth\AuthController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('clients.index');
 });
 // Route::middleware('admin')->group(function () {
 Route::resource('danhmuc', DanhMucController::class);

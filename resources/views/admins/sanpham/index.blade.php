@@ -39,7 +39,7 @@
                 <tr>
                     <th scope="row">{{ $sp->id }}</th>
                     <td>{{ $sp->ten_san_pham }}</td>
-                    <td><img src="{{ Storage::url($sp->link_anh) }}" alt="" width="100px"></td>
+                    <td><img src="{{ Storage::url($sp->hinh_anh) }}" alt="" width="100px"></td>
                     <td>{{ $sp->so_luong }}</td>
                     <td>{{ $sp->gia_san_pham }}</td>
                     <td>{{ $sp->gia_khuyen_mai }}</td>
@@ -48,9 +48,11 @@
                     <td>{{ $sp->ten_danh_muc }}</td>
                     <th>{{ $sp->trang_thai == 0 ? 'Còn Hàng' : 'Hết Hàng' }}</th>
                     <td>
+                        <a href="{{ route('sanpham.edit', $sp->id) }}" class="btn btn-warning me-1 ">Sửa</a>
+                        <a href="{{ route('sanpham.show', $sp->id) }}" class="btn btn-success me-1 ">Chi tiết</a>
                         <form action="{{ route('sanpham.destroy', $sp->id) }}"
                             onsubmit="return confirm('Bạn thực sự muốn xóa ?')" method="post" style="display: inline;">
-                            <a href="{{ route('sanpham.edit', $sp->id) }}" class="btn btn-warning">Sửa</a>
+                         
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Xóa</button>

@@ -10,10 +10,7 @@
 <h3 class=" text-center mb-0">ĐÂY LÀ THÊM DANH MỤC</h3>
 <form action="{{ route('danhmuc.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="mb-3">
-        <label class="form-label">ID</label>
-        <input type="text" name="id" class="form-control" disabled>
-      </div>
+  
     <div class="mb-3">
       <label class="form-label">Hình ảnh</label>
       <input type="file" name="hinh_anh" class="form-control"  onchange="showImage(event)" >

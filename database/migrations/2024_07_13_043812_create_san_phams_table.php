@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('mo_ta');
             $table->unsignedBigInteger('danh_muc_id');
             $table->boolean('trang_thai')->default(0);
+            $table->string('hinh_anh');
             $table->timestamps();
 
             $table->foreign('danh_muc_id')->references('id')->on('danh_mucs')->onDelete('cascade');

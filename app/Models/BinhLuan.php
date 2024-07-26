@@ -43,7 +43,16 @@ class BinhLuan extends Model
             ->where('id', $id)
             ->delete();
     }
+    public function getByIdSp ($id) {
+        $binh_luans = DB::table('binh_luans')
+                        ->join('users', 'binh_luans.tai_khoan_id', '=', 'users.id')
+                        ->join('san_phams', 'binh_luans.san_pham_id', '=', 'san_phams.id')
+                        ->where('san_phams.id', $id)
+                        ->select('binh_luans.*', 'users.ho_ten', 'san_phams.ten_san_pham')
+                        ->first();
 
+        return $binh_luans;
+    }
     protected $fillable = [
         'id',
         'tai_khoan_id',

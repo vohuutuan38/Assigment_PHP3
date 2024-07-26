@@ -16,10 +16,6 @@
 <form action="{{ route('sanpham.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-        <label class="form-label">ID</label>
-        <input type="text" name="id" class="form-control" >
-      </div>
-    <div class="mb-3">
         <label class="form-label">Tên Sản Phẩm</label>
         <input type="text" name="ten_san_pham" class="form-control" >
       </div>
@@ -63,7 +59,7 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Ảnh Sản Phẩm</label>
-      <input type="file" name="link_anh" class="form-control" >
+      <input type="file" name="hinh_anh" class="form-control" >
     </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary ">Submit</button>

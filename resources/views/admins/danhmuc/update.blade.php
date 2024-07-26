@@ -18,6 +18,7 @@
     <div class="mb-3">
       <label class="form-label">Hình ảnh</label>
       <input type="file" name="hinh_anh" value="{{$danhmuc->hinh_anh}}" class="form-control" >
+      <img src="{{Storage::url( $danhmuc->hinh_anh)  }}" alt="" width="100px">
     </div>
     <div class="mb-3">
         <label class="form-label">Tên Danh Mục</label>

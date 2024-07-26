@@ -9,12 +9,12 @@
 
 @section('content')
 <h3 class="text-center mb-0">Trang sửa sản phẩm</h3>
-<form action="{{route('sanpham.update',$sanpham->id)}}" method="POST">
+<form action="{{route('sanpham.update',$sanpham->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="mb-3">
-        <label class="form-label">ID</label>
-        <input type="text" name="id" value="{{$sanpham->id}}" class="form-control" disabled>
+        <label class="form-label" hidden>ID</label>
+        <input type="text" name="id" value="{{$sanpham->id}}" class="form-control" hidden>
       </div>
     <div class="mb-3">
         <label class="form-label">Tên Sản Phẩm</label>
@@ -56,6 +56,13 @@
         <label class="form-check-label" for="admin_checkbox">Còn hàng</label>
         <input type="radio" name="trang_thai" value="1">
         <label class="form-check-label" for="admin_checkbox">Hết hàng</label>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Ảnh Sản Phẩm</label>
+      <input type="file" name="hinh_anh" class="form-control" >
+
+      <img src="{{Storage::url($sanpham->hinh_anh)}}" alt="" width="100px">
+     
     </div>
       
       <div class="text-center">

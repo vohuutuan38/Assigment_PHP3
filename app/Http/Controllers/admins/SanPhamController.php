@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\admins;
 
-use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
-use App\Models\HinhAnhSanPham;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
+use App\Models\HinhAnhSanPham;
+use App\Http\Controllers\Controller;
+use App\Models\BinhLuan;
+use Illuminate\Support\Facades\Storage;
 
 class SanPhamController extends Controller
 {
@@ -17,7 +19,6 @@ class SanPhamController extends Controller
     {
 
         $sanpham = SanPham::join('danh_mucs', 'san_phams.danh_muc_id', '=', 'danh_mucs.id')
-            // ->join('hinh_anh_san_phams', 'san_phams.id', '=', 'hinh_anh_san_phams.san_pham_id')
             ->select('san_phams.*', 'ten_danh_muc')
             ->get();
 
@@ -43,21 +44,18 @@ class SanPhamController extends Controller
     {
         if ($request->isMethod('POST')) {
 
-            $params = $request->except('_token');
+            $params = $request->all();
 
-            if ($request->hasFile('link_anh')) {
-                $filename = $request->file('link_anh')->store('uploads/sanpham', 'public');
+            if ($request->hasFile('hinh_anh')) {
+                $filename = $request->file('hinh_anh')->store('uploads/sanpham', 'public');
             } else {
                 $filename = null;
             }
 
+                $params['hinh_anh'] = $filename;
 
             SanPham::create($params);
 
-            HinhAnhSanPham::create([
-                'san_pham_id' => $request->input('id'),
-                'link_anh' => $filename,
-            ]);
 
             return redirect()->route('sanpham.index')->with('thongbao', 'Thêm sản phẩm thành công');
         }
@@ -66,17 +64,24 @@ class SanPhamController extends Controller
     /**
      * Display the specified resource.
      */
+    public $binhluan;
     public function show(string $id)
     {
-        //
+ 
+        $sanpham = SanPham::query()->findOrFail($id);
+        
+        $this->binhluan = new BinhLuan();
+        $spbinhluan = $this->binhluan->getByIdSp($id);
+        // dd($spbinhluan);
+        return view('admins.sanpham.detail',compact('sanpham','spbinhluan'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SanPham $sanpham, DanhMuc $danhmuc)
+    public function edit(SanPham $sanpham )
     {
-
+  
         $danhmuc = DanhMuc::all();
         return view('admins.sanpham.update', compact('sanpham', 'danhmuc',));
     }
@@ -84,9 +89,29 @@ class SanPhamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SanPham $sanpham)
+    public function update(Request $request,string $id)
     {
-        $sanpham->update($request->all());
+        $params = $request->except('_token','_method');
+
+        $sanPham = SanPham::query()->findOrFail($id);
+            if ($request->hasFile('hinh_anh') && Storage::disk('public')->exists($sanPham->hinh_anh) ) {
+
+                if ($sanPham->hinh_anh) {
+                    Storage::disk('public')->delete($sanPham->hinh_anh);
+                }
+                // thêm ảnh mới
+                $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanpham', 'public');
+            } else {
+                $params['hinh_anh'] = $sanPham->hinh_anh;
+            }
+
+        
+        
+        $sanPham->update($params);
+
+       
+        // $sanpham->update($request->all());
+
         return redirect()->route('sanpham.index')->with('thongbao', 'Cập nhật sản phẩm thành công');
     }
 
@@ -98,4 +123,6 @@ class SanPhamController extends Controller
         $sanpham->delete();
         return redirect()->route('sanpham.index')->with('thongbao', 'Xóa Sản phẩm thành công');
     }
+
+   
 }
