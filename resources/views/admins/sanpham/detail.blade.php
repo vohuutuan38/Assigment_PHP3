@@ -20,41 +20,48 @@
     <div class="btn_dm mb-3">
         <a href="{{ route('sanpham.index') }}"><button>Trở Lại</button></a>
     </div>
-    <table class="table table-light table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Tên Sản Phẩm</th>
-                <th scope="col">Ảnh Sản Phẩm</th>
-                <th scope="col">Số Lượng</th>
-                <th scope="col">Ngày Nhập</th>
-                
-                <th scope="col" colspan="2">Mô Tả</th>  
+   
+
+    <form class="row g-3">
+       
+        <div class="col-md-12">
+            <label for="colFormLabelLg" class=" col-form-label col-form-label-lg">Tên sản phẩm</label>
+            
+              <input type="text" class="form-control " id="colFormLabelLg" value="{{ $sanpham->ten_san_pham }}" disabled>
+            
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class=" col-form-label col-form-label-lg">Số lượng</label>
+            <input type="number" class="form-control" value="{{ $sanpham->so_luong }}" disabled>
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class=" col-form-label col-form-label-lg">Ngày Nhập</label>
+            <input type="number" class="form-control" value="{{ $sanpham->so_luong }}" disabled>
+          </div>
+        <div class="col-md-12">
+            <label for="inputPassword4" class="col-form-label col-form-label-lg">Ảnh Sản Phẩm</label>         
+                <img src="{{Storage::url($sanpham->hinh_anh)}}" alt="" class="d-block" width="200px">          
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="col-form-label col-form-label-lg">Album ảnh sản phẩm</label>
+            <div class="form-control">
+                 @foreach ($hinhAnhSanPham as $index => $hinhAnh)
+                 <img src="{{Storage::url($hinhAnh)}}" id="preview_{{$index}}"  alt="hình ảnh sản phẩm"
+                     style="width:150px; " class="me-3">
                
-            </tr>
-        </thead>
-        <tbody>
-               
-                <tr>
-                  
-                    <th scope="row">{{ $sanpham->id }}</th>
-                    <td>{{ $sanpham->ten_san_pham }}</td>
-                    <td><img src="{{ Storage::url($sanpham->hinh_anh) }}" alt="" width="150px"></td>
-                    <td>{{ $sanpham->so_luong }}</td>
-                    <td>{{ $sanpham->ngay_nhap }}</td>
-                    
-                    <td scope="col"><textarea class="form-control" name="" id="" cols="80" rows="80" disabled>{{ $sanpham->mo_ta }}</textarea></td>
-                    <th></th>
-                </tr>
-
-        </tbody>
-    </table>
+                 @endforeach
+          </div>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="col-form-label col-form-label-lg">Mô Tả</label>
+            <textarea style="height: 300px" class="form-control h-100" disabled>{{$sanpham->mo_ta}}</textarea>
+          </div>
+       
+      </form>
 
 
-
-    
  
-    <h3 class="text-center">BÌNH LUẬN SẢN PHẨM</h3>
+    <h3 class="text-center mt-5">BÌNH LUẬN SẢN PHẨM</h3>
     <table class="table table-light table-hover">
         <thead class="thead-dark">
             <tr>
@@ -85,4 +92,5 @@
 
 
 @section('script')
+
 @endsection

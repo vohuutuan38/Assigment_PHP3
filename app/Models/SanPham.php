@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SanPham extends Model
 {
@@ -21,5 +22,7 @@ class SanPham extends Model
        'hinh_anh',
     ];
 
-
+ public function hinhAnhSanPham(){
+    return $this->hasMany(HinhAnhSanPham::class);
+ }
 }
