@@ -26,6 +26,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Tên Sản Phẩm</th>
                 <th scope="col">Ảnh Sản Phẩm</th>
+                <th scope="col">Số Lượng</th>
                 <th scope="col">Ngày Nhập</th>
                 
                 <th scope="col" colspan="2">Mô Tả</th>  
@@ -33,12 +34,13 @@
             </tr>
         </thead>
         <tbody>
-
+               
                 <tr>
                   
                     <th scope="row">{{ $sanpham->id }}</th>
                     <td>{{ $sanpham->ten_san_pham }}</td>
                     <td><img src="{{ Storage::url($sanpham->hinh_anh) }}" alt="" width="150px"></td>
+                    <td>{{ $sanpham->so_luong }}</td>
                     <td>{{ $sanpham->ngay_nhap }}</td>
                     
                     <td scope="col"><textarea class="form-control" name="" id="" cols="80" rows="80" disabled>{{ $sanpham->mo_ta }}</textarea></td>
@@ -63,13 +65,18 @@
             </tr>
         </thead>
         <tbody>
-
-                <tr>               
-                    <th scope="row">{{$spbinhluan->ho_ten}}</th>
-                    <td>{{$spbinhluan->noi_dung}}</td>
-                    <td>{{$spbinhluan->thoi_gian}}</td>
-                    <td>{{$spbinhluan->trang_thai == 0 ? "Đã Duyệt" : "Chưa Duyệt"}}</td>  
-                </tr>
+            @if ($spbinhluan)
+            @foreach ($spbinhluan as $item)
+            <tr>               
+                <th scope="row">{{$item->ho_ten}}</th>
+                <td>{{$item->noi_dung}}</td>
+                <td>{{$item->thoi_gian}}</td>
+                <td>{{$item->trang_thai == 0 ? "Đã Duyệt" : "Chưa Duyệt"}}</td>  
+            </tr>
+            @endforeach
+           
+            @endif
+               
 
         </tbody>
     </table>

@@ -72,6 +72,7 @@ class SanPhamController extends Controller
         
         $this->binhluan = new BinhLuan();
         $spbinhluan = $this->binhluan->getByIdSp($id);
+       
         // dd($spbinhluan);
         return view('admins.sanpham.detail',compact('sanpham','spbinhluan'));
     }

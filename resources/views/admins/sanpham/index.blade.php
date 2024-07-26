@@ -24,11 +24,8 @@
                 <th scope="col">ID</th>
                 <th scope="col">Tên Sản Phẩm</th>
                 <th scope="col">Ảnh Sản Phẩm</th>
-                <th scope="col">Số Lượng</th>
                 <th scope="col">Giá Sản Phẩm</th>
                 <th scope="col">Giá Khuyến Mãi</th>
-                <th scope="col">Ngày Nhập</th>
-                <th scope="col">Mô Tả</th>
                 <th scope="col">Tên Danh Mục</th>
                 <th scope="col">Trạng Thái</th>
                 <th scope="col">Hành Động</th>
@@ -40,11 +37,8 @@
                     <th scope="row">{{ $sp->id }}</th>
                     <td>{{ $sp->ten_san_pham }}</td>
                     <td><img src="{{ Storage::url($sp->hinh_anh) }}" alt="" width="100px"></td>
-                    <td>{{ $sp->so_luong }}</td>
                     <td>{{ $sp->gia_san_pham }}</td>
                     <td>{{ $sp->gia_khuyen_mai }}</td>
-                    <td>{{ $sp->ngay_nhap }}</td>
-                    <td>{{ $sp->mo_ta }}</td>
                     <td>{{ $sp->ten_danh_muc }}</td>
                     <th>{{ $sp->trang_thai == 0 ? 'Còn Hàng' : 'Hết Hàng' }}</th>
                     <td>

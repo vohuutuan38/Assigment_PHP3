@@ -23,7 +23,7 @@ use App\Http\Controllers\auth\AuthController;
 Route::get('/', function () {
     return view('clients.index');
 });
-// Route::middleware('admin')->group(function () {
+Route::middleware('admin')->group(function () {
 Route::resource('danhmuc', DanhMucController::class);
 Route::resource('sanpham', SanPhamController::class);
 Route::resource('user', UserController::class);
@@ -34,7 +34,7 @@ Route::resource('sanpham', SanPhamController::class);
 Route::resource('user', UserController::class);
 Route::resource('binhluan', BinhLuanController::class);
 Route::resource('chucvu', ChucVuController::class);
-// });
+});
 
 
 // Auth
