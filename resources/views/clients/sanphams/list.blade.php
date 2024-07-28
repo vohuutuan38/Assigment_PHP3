@@ -127,13 +127,15 @@
                         <!-- product item list wrapper start -->
                         <div class="shop-product-wrap grid-view row mbn-30">
                             <!-- product single item start -->
-                            <div class="col-md-4 col-sm-6">
+                            @foreach ($sanPham as $item)
+                            <div class="col-md-4 col-sm-6"> 
                                 <!-- product grid start -->
+                                
                                 <div class="product-item">
                                     <figure class="product-thumb">
-                                        <a href="{{ route('sanphamchitiet.detail') }}">
-                                            <img class="pri-img" src="assets/img/product/product-1.jpg" alt="product">
-                                            <img class="sec-img" src="assets/img/product/product-18.jpg" alt="product">
+                                        <a href="{{ route('sanphamchitiet.detail',$item->id) }}">
+                                            <img class="img" src="{{Storage::url($item->hinh_anh)}}" alt="product">
+                                            
                                         </a>
                                         <div class="product-badge">
                                             <div class="product-label new">
@@ -171,18 +173,21 @@
                                             </li>
                                         </ul>
                                         <h6 class="product-name">
-                                            <a href="{{ route('sanphamchitiet.detail') }}">Perfect Diamond Jewelry</a>
+                                            <a href="{{ route('sanphamchitiet.detail',$item->id) }}">{{$item->ten_san_pham}}</a>
                                         </h6>
                                         <div class="price-box">
-                                            <span class="price-regular">$60.00</span>
-                                            <span class="price-old"><del>$70.00</del></span>
+                                            <span class="price-regular">{{number_format($item->gia_san_pham)}} đ</span>
+                                            <span class="price-old"><del>{{number_format($item->gia_khuyen_mai)}} đ</del></span>
                                         </div>
                                     </div>
                                 </div>
+                              
+                                
+                               
                                 <!-- product grid end -->
 
                                 <!-- product list item end -->
-                                <div class="product-list-item">
+                                {{-- <div class="product-list-item">
                                     <figure class="product-thumb">
                                         <a href="{{ route('sanphamchitiet.detail') }}">
                                             <img class="pri-img" src="assets/img/product/product-1.jpg" alt="product">
@@ -233,9 +238,12 @@
                                             quod numquam, sit fugiat, deserunt ipsa mollitia sunt quam corporis ullam
                                             rem, accusantium adipisci officia eaque.</p>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- product list item end -->
                             </div>
+                            @endforeach
+                            
+                            
                             <!-- product single item start -->
 
                         </div>

@@ -21,13 +21,13 @@ use App\Http\Controllers\admins\BinhLuanController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('/home');
+Route::get('/', [HomeController::class,'index'])->name('/home');
 Route::get('sanphamdanhmuc', [HomeController::class, 'list'])->name('sanphamdanhmuc.list');
-Route::get('sanphamchitiet', [HomeController::class, 'detail'])->name('sanphamchitiet.detail');
+Route::get('sanphamchitiet/{id}', [HomeController::class,'detail'])->name('sanphamchitiet.detail');
 Route::middleware('admin')->group(function () {
     Route::resource('danhmuc', DanhMucController::class);
     Route::resource('sanpham', SanPhamController::class);
-    Route::resource('user', UserController::class);
+    Route::resource('user', UserController::class); 
     Route::resource('binhluan', BinhLuanController::class);
     Route::resource('chucvu', ChucVuController::class);
     Route::resource('danhmuc', DanhMucController::class);

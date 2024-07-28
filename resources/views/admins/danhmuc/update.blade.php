@@ -8,7 +8,7 @@
 
 @section('content')
 <h3 class="text-center mb-0">ĐÂY LÀ TRANG SỬA DANH MỤC</h3>
-<form action="{{ route('danhmuc.update',$danhmuc->id) }}" method="POST">
+<form action="{{ route('danhmuc.update',$danhmuc->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT');
     <div class="mb-3">
@@ -17,7 +17,7 @@
       </div>
     <div class="mb-3">
       <label class="form-label">Hình ảnh</label>
-      <input type="file" name="hinh_anh" value="{{$danhmuc->hinh_anh}}" class="form-control" >
+      <input type="file" name="hinh_anh"  class="form-control" >
       <img src="{{Storage::url( $danhmuc->hinh_anh)  }}" alt="" width="100px">
     </div>
     <div class="mb-3">

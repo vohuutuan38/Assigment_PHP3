@@ -11,54 +11,24 @@
         <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
             <!-- single slider item start -->
             <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="{{ asset('assets/clients/img/slider/home1-slide2.jpg') }}">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="hero-slider-content slide-1">
-                                    <h2 class="slide-title">Family Jewelry <span>Collection</span></h2>
-                                    <h4 class="slide-desc">Designer Jewelry Necklaces-Bracelets-Earings</h4>
-                                    <a href="shop.html" class="btn btn-hero">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-slider-item bg-img" data-bg="{{ asset('assets/clients/img/slider/slider_1.jpg') }}">
+                   
                 </div>
             </div>
             <!-- single slider item start -->
 
             <!-- single slider item start -->
             <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="{{ asset('assets/clients/img/slider/home1-slide3.jpg') }}">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="hero-slider-content slide-2 float-md-end float-none">
-                                    <h2 class="slide-title">Diamonds Jewelry<span>Collection</span></h2>
-                                    <h4 class="slide-desc">Shukra Yogam & Silver Power Silver Saving Schemes.</h4>
-                                    <a href="shop.html" class="btn btn-hero">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-slider-item bg-img" data-bg="{{ asset('assets/clients/img/slider/slider_2.jpg') }}">
+                   
                 </div>
             </div>
             <!-- single slider item start -->
 
             <!-- single slider item start -->
             <div class="hero-single-slide hero-overlay">
-                <div class="hero-slider-item bg-img" data-bg="{{ asset('assets/clients/img/slider/home1-slide1.jpg') }}">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="hero-slider-content slide-3">
-                                    <h2 class="slide-title">Grace Designer<span>Jewelry</span></h2>
-                                    <h4 class="slide-desc">Rings, Occasion Pieces, Pandora & More.</h4>
-                                    <a href="shop.html" class="btn btn-hero">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-slider-item bg-img" data-bg="{{ asset('assets/clients/img/slider/slider_3.jpg') }}">
+                    
                 </div>
             </div>
             <!-- single slider item end -->
@@ -138,7 +108,7 @@
                 <div class="col-12">
                     <!-- section title start -->
                     <div class="section-title text-center">
-                        <h2 class="title">Nhẫn</h2>
+                        <h2 class="title">LapTop</h2>
                     </div>
                     <!-- section title start -->
                 </div>
@@ -147,11 +117,12 @@
                 <div class="col-12">
                     <div class="product-carousel-4_2 slick-row-10 slick-arrow-style">
                         <!-- product item start -->
+                        @foreach ($sanPham as $item)
                         <div class="product-item">
                             <figure class="product-thumb">
-                                <a href="{{ route('sanphamchitiet.detail') }}">
-                                    <img class="pri-img" src="assets/img/product/product-6.jpg" alt="product">
-                                    <img class="sec-img" src="assets/img/product/product-13.jpg" alt="product">
+                                <a href="{{ route('sanphamchitiet.detail',$item->id) }}">
+                                    <img class="img" src="{{Storage::url($item->hinh_anh)}}" alt="product">
+                                    
                                 </a>
                                 <div class="product-badge">
                                     <div class="product-label new">
@@ -189,7 +160,7 @@
                                     </li>
                                 </ul>
                                 <h6 class="product-name">
-                                    <a href="{{ route('sanphamchitiet.detail') }}">Perfect Diamond Jewelry</a>
+                                    <a href="{{ route('sanphamchitiet.detail',$item->id) }}">Perfect Diamond Jewelry</a>
                                 </h6>
                                 <div class="price-box">
                                     <span class="price-regular">$60.00</span>
@@ -197,6 +168,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+                        
                         <!-- product item end -->
                         
                     </div>
@@ -221,64 +194,22 @@
                 <div class="col-12">
                     <div class="product-banner-carousel slick-row-10">
                         <!-- banner single slide start -->
+                        @foreach ($danhMuc as $item)
                         <div class="banner-slide-item">
                             <figure class="banner-statistics">
                                 <a href="#">
-                                    <img src="{{ asset('assets/clients/img/banner/img1-middle.jpg') }}" alt="product banner">
+                                    <img src="{{ Storage::url($item->hinh_anh)}}" alt="product banner">
                                 </a>
                                 <div class="banner-content banner-content_style2">
-                                    <h5 class="banner-text3"><a href="#">BRACELATES</a></h5>
+                                    <h5 class="banner-text3"><a href="#">{{$item->ten_danh_muc}}</a></h5>
                                 </div>
                             </figure>
                         </div>
+                        @endforeach
+                        
                         <!-- banner single slide start -->
                         <!-- banner single slide start -->
-                        <div class="banner-slide-item">
-                            <figure class="banner-statistics">
-                                <a href="#">
-                                    <img src="{{ asset('assets/clients/img/banner/img2-middle.jpg') }}" alt="product banner">
-                                </a>
-                                <div class="banner-content banner-content_style2">
-                                    <h5 class="banner-text3"><a href="#">EARRINGS</a></h5>
-                                </div>
-                            </figure>
-                        </div>
-                        <!-- banner single slide start -->
-                        <!-- banner single slide start -->
-                        <div class="banner-slide-item">
-                            <figure class="banner-statistics">
-                                <a href="#">
-                                    <img src="{{ asset('assets/clients/img/banner/img3-middle.jpg') }}" alt="product banner">
-                                </a>
-                                <div class="banner-content banner-content_style2">
-                                    <h5 class="banner-text3"><a href="#">NECJLACES</a></h5>
-                                </div>
-                            </figure>
-                        </div>
-                        <!-- banner single slide start -->
-                        <!-- banner single slide start -->
-                        <div class="banner-slide-item">
-                            <figure class="banner-statistics">
-                                <a href="#">
-                                    <img src="{{ asset('assets/clients/img/banner/img4-middle.jpg') }}" alt="product banner">
-                                </a>
-                                <div class="banner-content banner-content_style2">
-                                    <h5 class="banner-text3"><a href="#">RINGS</a></h5>
-                                </div>
-                            </figure>
-                        </div>
-                        <!-- banner single slide start -->
-                        <!-- banner single slide start -->
-                        <div class="banner-slide-item">
-                            <figure class="banner-statistics">
-                                <a href="#">
-                                    <img src="{{ asset('assets/clients/img/banner/img5-middle.jpg') }}" alt="product banner">
-                                </a>
-                                <div class="banner-content banner-content_style2">
-                                    <h5 class="banner-text3"><a href="#">PEARLS</a></h5>
-                                </div>
-                            </figure>
-                        </div>
+
                         <!-- banner single slide start -->
                     </div>
                 </div>
