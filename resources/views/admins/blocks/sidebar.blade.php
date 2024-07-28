@@ -5,37 +5,37 @@
             <p>Home</p>
         </a>
     </li>
-    <li @if (request()->path() == 'danhmuc') class="active " @endif>
+    <li @if (request()->path() == 'admin/danhmuc') class="active " @endif>
         <a href="{{ route('danhmuc.index') }}">
             <i class="nc-icon nc-bullet-list-67"></i>
             <p>Danh Mục</p>
         </a>
     </li>
-    <li @if (request()->path() == 'sanpham') class="active " @endif>
+    <li @if (request()->path() == 'admin/sanpham') class="active " @endif>
         <a href="{{ route('sanpham.index') }}">
             <i class="nc-icon nc-app"></i>
             <p>Sản Phẩm</p>
         </a>
     </li>
-    <li @if (request()->path() == 'chucvu') class="active " @endif>
+    <li @if (request()->path() == 'admin/chucvu') class="active " @endif>
         <a href="{{ route('chucvu.index') }}">
             <i class="nc-icon nc-circle-10"></i>
             <p>Chức Vụ</p>
         </a>
     </li>
-    <li @if (request()->path() == 'user') class="active " @endif>
+    <li @if (request()->path() == 'admin/user') class="active " @endif>
         <a href="{{ route('user.index') }}">
             <i class="nc-icon nc-circle-10"></i>
             <p>Tài Khoản</p>
         </a>
     </li>
-    <li @if (request()->path() == 'binhluan') class="active " @endif>
+    <li @if (request()->path() == 'admin/binhluan') class="active " @endif>
         <a href="{{ route('binhluan.index') }}">
             <i class="fa-regular fa-comment"></i>
             <p>Bình luận</p>
         </a>
     </li>
-    <li @if (request()->path() == 'donhang') class="active " @endif>
+    <li @if (request()->path() == 'admin/donhang') class="active " @endif>
         <a href="javascript:;">
             <i class="nc-icon nc-cart-simple"></i>
             <p>Đơn hàng</p>

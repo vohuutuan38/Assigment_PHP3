@@ -22,7 +22,7 @@ class AuthController extends Controller
         $data = $request->except('_token');
         if (Auth::attempt($data)) {
             if (Auth::user()->chucVu->ten_chuc_vu == 'Admin') {
-                return redirect('/sanpham');
+                return redirect('/admin/sanpham');
             }
             return redirect()->intended('/');
         }
