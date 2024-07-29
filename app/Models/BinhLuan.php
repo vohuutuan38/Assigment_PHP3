@@ -61,4 +61,5 @@ class BinhLuan extends Model
         'thoi_gian',
         'trang_thai'
     ];
+    
 }

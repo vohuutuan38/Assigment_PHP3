@@ -142,8 +142,9 @@
                                             </table>
                                         </div>
                                         <div class="tab-pane fade" id="tab_three">
+                                            @foreach ($binhLuan as $item)
                                             <form action="#" class="review-form">
-                                                <h5>1 review for <span>Chaz Kangeroo</span></h5>
+                                             
                                                 <div class="total-reviews">
                                                     <div class="rev-avatar">
                                                         <img src="assets/img/about/avatar.jpg" alt="">
@@ -157,61 +158,17 @@
                                                             <span><i class="fa fa-star"></i></span>
                                                         </div>
                                                         <div class="post-author">
-                                                            <p><span>admin -</span> 30 Mar, 2019</p>
+                                                            
+                                                            <p><span>{{$item->ho_ten}}</span> {{$item->thoi_gian}}</p>
                                                         </div>
-                                                        <p>Aliquam fringilla euismod risus ac bibendum. Sed sit
-                                                            amet sem varius ante feugiat lacinia. Nunc ipsum nulla,
-                                                            vulputate ut venenatis vitae, malesuada ut mi. Quisque
-                                                            iaculis, dui congue placerat pretium, augue erat
-                                                            accumsan lacus</p>
+                                                        <p>{{$item->noi_dung}}</p>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <div class="col">
-                                                        <label class="col-form-label"><span class="text-danger">*</span>
-                                                            Your Name</label>
-                                                        <input type="text" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col">
-                                                        <label class="col-form-label"><span class="text-danger">*</span>
-                                                            Your Email</label>
-                                                        <input type="email" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col">
-                                                        <label class="col-form-label"><span class="text-danger">*</span>
-                                                            Your Review</label>
-                                                        <textarea class="form-control" required></textarea>
-                                                        <div class="help-block pt-10"><span
-                                                                class="text-danger">Note:</span>
-                                                            HTML is not translated!
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col">
-                                                        <label class="col-form-label"><span class="text-danger">*</span>
-                                                            Rating</label>
-                                                        &nbsp;&nbsp;&nbsp; Bad&nbsp;
-                                                        <input type="radio" value="1" name="rating">
-                                                        &nbsp;
-                                                        <input type="radio" value="2" name="rating">
-                                                        &nbsp;
-                                                        <input type="radio" value="3" name="rating">
-                                                        &nbsp;
-                                                        <input type="radio" value="4" name="rating">
-                                                        &nbsp;
-                                                        <input type="radio" value="5" name="rating" checked>
-                                                        &nbsp;Good
-                                                    </div>
-                                                </div>
-                                                <div class="buttons">
-                                                    <button class="btn btn-sqr" type="submit">Continue</button>
-                                                </div>
-                                            </form> <!-- end of review-form -->
+                                              
+                                            </form> 
+                                            @endforeach
+                                           
+                                            <!-- end of review-form -->
                                         </div>
                                     </div>
                                 </div>

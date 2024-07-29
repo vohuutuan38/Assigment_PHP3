@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BinhLuan;
 use App\Models\DanhMuc;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    // public $sanPham;
-    // public function __construct() {
-    //     $this->sanPham = new SanPham();
-    // }
+    public $binhLuan;
+    public function __construct() {
+        $this->binhLuan = new BinhLuan();
+    }
 
     public function index () {
         
@@ -32,7 +33,8 @@ class HomeController extends Controller
         $danhMuc = DanhMuc::get();
         $sanPham = SanPham::query()->findOrFail($id);
         $listSanPham = SanPham::get();
+        $binhLuan = $this->binhLuan->getByIdSp($id);
         
-        return view('clients.sanphams.chitiet', compact('danhMuc','sanPham','listSanPham'));
+        return view('clients.sanphams.chitiet', compact('danhMuc','sanPham','listSanPham','binhLuan'));
     }
 }
