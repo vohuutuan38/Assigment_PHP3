@@ -23,8 +23,9 @@ use App\Http\Controllers\admins\BinhLuanController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('/home');
-Route::get('sanphamdanhmuc', [HomeController::class, 'list'])->name('sanphamdanhmuc.list');
+Route::get('sanphamdanhmuc/{id}', [HomeController::class, 'productCategory'])->name('sanphamdanhmuc.show');
 Route::get('sanphamchitiet/{id}', [HomeController::class, 'detail'])->name('sanphamchitiet.detail');
+Route::get('search', [HomeController::class, 'search'])->name('sanpham.search');
 // Route::middleware('admin')->group(function () {
 //     Route::resource('danhmuc', DanhMucController::class);
 //     Route::resource('sanpham', SanPhamController::class);

@@ -37,12 +37,9 @@
                             <h5 class="sidebar-title">categories</h5>
                             <div class="sidebar-body">
                                 <ul class="shop-categories">
-                                    <li><a href="#">fashionware <span>(10)</span></a></li>
-                                    <li><a href="#">kitchenware <span>(5)</span></a></li>
-                                    <li><a href="#">electronics <span>(8)</span></a></li>
-                                    <li><a href="#">accessories <span>(4)</span></a></li>
-                                    <li><a href="#">shoe <span>(5)</span></a></li>
-                                    <li><a href="#">toys <span>(2)</span></a></li>
+                                    @foreach ($danhMuc as $dm)
+                                    <li><a href="{{ route('sanphamdanhmuc.show', $dm->id) }}">{{ $dm->ten_danh_muc }}</a></li>  
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -127,7 +124,7 @@
                         <!-- product item list wrapper start -->
                         <div class="shop-product-wrap grid-view row mbn-30">
                             <!-- product single item start -->
-                            @foreach ($sanPham as $item)
+                            @foreach ($listSanPham as $item)
                             <div class="col-md-4 col-sm-6"> 
                                 <!-- product grid start -->
                                 
