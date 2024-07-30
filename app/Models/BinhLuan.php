@@ -49,7 +49,7 @@ class BinhLuan extends Model
                         ->join('san_phams', 'binh_luans.san_pham_id', '=', 'san_phams.id')
                         ->where('san_phams.id', $id)
                         ->select('binh_luans.*', 'users.ho_ten', 'san_phams.ten_san_pham')
-                        ->first();
+                        ->get();
 
         return $binh_luans;
     }

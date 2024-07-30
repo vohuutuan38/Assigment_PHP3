@@ -6,18 +6,16 @@ use App\Models\SanPham;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class DanhMuc extends Model
+class HinhAnhSanPham extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = [
-        'id',
+        'san_pham_id',
         'hinh_anh',
-        'ten_danh_muc',
-        'mo_ta'
     ];
 
-    public function sanPham () {
-        return $this->hasMany(SanPham::class);
-    }
+    public function sanPham(){
+        return $this->belongsTo(SanPham::class);
+     }
 }

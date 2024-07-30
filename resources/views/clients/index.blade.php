@@ -1,598 +1,413 @@
 @extends('layouts.client')
 
 @section('css')
-    
 @endsection
 
 @section('content')
-<main>
-    <!-- breadcrumb area start -->
-    <div class="breadcrumb-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb-wrap">
-                        <nav aria-label="breadcrumb">
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                <li class="breadcrumb-item active" aria-current="page">shop</li>
-                            </ul>
-                        </nav>
+    <main>
+        <!-- hero slider area start -->
+        <section class="slider-area">
+            <div class="hero-slider-active slick-arrow-style slick-arrow-style_hero slick-dot-style">
+                <!-- single slider item start -->
+                <div class="hero-single-slide hero-overlay">
+                    <div class="hero-slider-item bg-img" data-bg="{{ asset('assets/clients/img/slider/slider_1.jpg') }}">
+
+                    </div>
+                </div>
+                <!-- single slider item start -->
+
+                <!-- single slider item start -->
+                <div class="hero-single-slide hero-overlay">
+                    <div class="hero-slider-item bg-img" data-bg="{{ asset('assets/clients/img/slider/slider_2.jpg') }}">
+
+                    </div>
+                </div>
+                <!-- single slider item start -->
+
+                <!-- single slider item start -->
+                <div class="hero-single-slide hero-overlay">
+                    <div class="hero-slider-item bg-img" data-bg="{{ asset('assets/clients/img/slider/slider_3.jpg') }}">
+
+                    </div>
+                </div>
+                <!-- single slider item end -->
+            </div>
+        </section>
+        <!-- hero slider area end -->
+
+        <!-- twitter feed area start -->
+
+        <!-- twitter feed area end -->
+
+        <!-- service policy area start -->
+        <div class="service-policy section-padding">
+            <div class="container">
+                <div class="row mtn-30">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="policy-item">
+                            <div class="policy-icon">
+                                <i class="pe-7s-plane"></i>
+                            </div>
+                            <div class="policy-content">
+                                <h6>Free Shipping</h6>
+                                <p>Free shipping all order</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="policy-item">
+                            <div class="policy-icon">
+                                <i class="pe-7s-help2"></i>
+                            </div>
+                            <div class="policy-content">
+                                <h6>Support 24/7</h6>
+                                <p>Support 24 hours a day</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="policy-item">
+                            <div class="policy-icon">
+                                <i class="pe-7s-back"></i>
+                            </div>
+                            <div class="policy-content">
+                                <h6>Money Return</h6>
+                                <p>30 days for free return</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="policy-item">
+                            <div class="policy-icon">
+                                <i class="pe-7s-credit"></i>
+                            </div>
+                            <div class="policy-content">
+                                <h6>100% Payment Secure</h6>
+                                <p>We ensure secure payment</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- breadcrumb area end -->
+        <!-- service policy area end -->
 
-    <!-- page main wrapper start -->
-    <div class="shop-main-wrapper section-padding">
-        <div class="container">
-            <div class="row">
-                <!-- sidebar area start -->
-                <div class="col-lg-3 order-2 order-lg-1">
-                    <aside class="sidebar-wrapper">
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <h5 class="sidebar-title">categories</h5>
-                            <div class="sidebar-body">
-                                <ul class="shop-categories">
-                                    <li><a href="#">fashionware <span>(10)</span></a></li>
-                                    <li><a href="#">kitchenware <span>(5)</span></a></li>
-                                    <li><a href="#">electronics <span>(8)</span></a></li>
-                                    <li><a href="#">accessories <span>(4)</span></a></li>
-                                    <li><a href="#">shoe <span>(5)</span></a></li>
-                                    <li><a href="#">toys <span>(2)</span></a></li>
-                                </ul>
-                            </div>
+        <!-- banner statistics area start -->
+
+        <!-- banner statistics area end -->
+
+        <!-- product area start -->
+
+        <!-- product area end -->
+
+        <!-- featured product area start -->
+        <section class="feature-product section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- section title start -->
+                        <div class="section-title text-center">
+                            <h2 class="title">LapTop</h2>
                         </div>
-                        <!-- single sidebar end -->
+                        <!-- section title start -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-carousel-4_2 slick-row-10 slick-arrow-style">
+                            <!-- product item start -->
+                            @foreach ($sanPham as $item)
+                                <div class="product-item">
+                                    <figure class="product-thumb">
+                                        <a href="{{ route('sanphamchitiet.detail', $item->id) }}">
+                                            <img class="img" src="{{ Storage::url($item->hinh_anh) }}" alt="product">
 
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <h5 class="sidebar-title">price</h5>
-                            <div class="sidebar-body">
-                                <div class="price-range-wrap">
-                                    <div class="price-range" data-min="1" data-max="1000"></div>
-                                    <div class="range-slider">
-                                        <form action="#" class="d-flex align-items-center justify-content-between">
-                                            <div class="price-input">
-                                                <label for="amount">Price: </label>
-                                                <input type="text" id="amount">
+                                        </a>
+                                        <div class="product-badge">
+                                            <div class="product-label new">
+                                                <span>new</span>
                                             </div>
-                                            <button class="filter-btn">filter</button>
-                                        </form>
+                                            <div class="product-label discount">
+                                                <span>10%</span>
+                                            </div>
+                                        </div>
+                                        <div class="button-group">
+                                            <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                                title="Add to wishlist"><i class="pe-7s-like"></i></a>
+                                            <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left"
+                                                title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span
+                                                    data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i
+                                                        class="pe-7s-search"></i></span></a>
+                                        </div>
+                                        <div class="cart-hover">
+                                            <form action="{{ route('cart.add') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="hinh_anh" value="{{ $item->hinh_anh }}">
+                                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                                <input type="hidden" name="name" value="{{ $item->ten_san_pham }}">
+                                                <input type="hidden" name="quantity" value="1" min="1">
+                                                <input type="hidden" name="price" value="{{ $item->gia_san_pham }}">
+                                                <button type="submit" class="btn btn-cart2">Add to Cart</button>
+                                            </form>
+                                        </div>
+                                    </figure>
+                                    <div class="product-caption text-center">
+                                        <div class="product-identity">
+                                            <p class="manufacturer-name"><a href="product-details.html">Gold</a></p>
+                                        </div>
+                                        <ul class="color-categories">
+                                            <li>
+                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
+                                            </li>
+                                            <li>
+                                                <a class="c-darktan" href="#" title="Darktan"></a>
+                                            </li>
+                                            <li>
+                                                <a class="c-grey" href="#" title="Grey"></a>
+                                            </li>
+                                            <li>
+                                                <a class="c-brown" href="#" title="Brown"></a>
+                                            </li>
+                                        </ul>
+                                        <h6 class="product-name">
+                                            <a href="{{ route('sanphamchitiet.detail', $item->id) }}">Perfect Diamond
+                                                Jewelry</a>
+                                        </h6>
+                                        <div class="price-box">
+                                            <span class="price-regular">$60.00</span>
+                                            <span class="price-old"><del>$70.00</del></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- single sidebar end -->
+                            @endforeach
 
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <h5 class="sidebar-title">Brand</h5>
-                            <div class="sidebar-body">
-                                <ul class="checkbox-container categories-list">
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                            <label class="custom-control-label" for="customCheck2">Studio (3)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                            <label class="custom-control-label" for="customCheck3">Hastech (4)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                            <label class="custom-control-label" for="customCheck4">Quickiin (15)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                            <label class="custom-control-label" for="customCheck1">Graphic corner (10)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                            <label class="custom-control-label" for="customCheck5">devItems (12)</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- single sidebar end -->
+                            <!-- product item end -->
 
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <h5 class="sidebar-title">color</h5>
-                            <div class="sidebar-body">
-                                <ul class="checkbox-container categories-list">
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck12">
-                                            <label class="custom-control-label" for="customCheck12">black (20)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck13">
-                                            <label class="custom-control-label" for="customCheck13">red (6)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck14">
-                                            <label class="custom-control-label" for="customCheck14">blue (8)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck11">
-                                            <label class="custom-control-label" for="customCheck11">green (5)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck15">
-                                            <label class="custom-control-label" for="customCheck15">pink (4)</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
-                        <!-- single sidebar end -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- featured product area end -->
 
-                        <!-- single sidebar start -->
-                        <div class="sidebar-single">
-                            <h5 class="sidebar-title">size</h5>
-                            <div class="sidebar-body">
-                                <ul class="checkbox-container categories-list">
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck111">
-                                            <label class="custom-control-label" for="customCheck111">S (4)</label>
+        <!-- testimonial area start -->
+
+        <!-- testimonial area end -->
+
+        <!-- group product start -->
+
+        <!-- group product end -->
+
+        <!-- product banner statistics area start -->
+        <section class="product-banner-statistics mb-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-banner-carousel slick-row-10">
+                            <!-- banner single slide start -->
+                            @foreach ($danhMuc as $item)
+                                <div class="banner-slide-item">
+                                    <figure class="banner-statistics">
+                                        <a href="#">
+                                            <img src="{{ Storage::url($item->hinh_anh) }}" alt="product banner">
+                                        </a>
+                                        <div class="banner-content banner-content_style2">
+                                            <h5 class="banner-text3"><a href="#">{{ $item->ten_danh_muc }}</a></h5>
                                         </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck222">
-                                            <label class="custom-control-label" for="customCheck222">M (5)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck333">
-                                            <label class="custom-control-label" for="customCheck333">L (7)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck444">
-                                            <label class="custom-control-label" for="customCheck444">XL (3)</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                                    </figure>
+                                </div>
+                            @endforeach
+
+                            <!-- banner single slide start -->
+                            <!-- banner single slide start -->
+
+                            <!-- banner single slide start -->
                         </div>
-                        <!-- single sidebar end -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- product banner statistics area end -->
 
-                        <!-- single sidebar start -->
-                        <div class="sidebar-banner">
-                            <div class="img-container">
+        <!-- latest blog area start -->
+        <section class="latest-blog-area section-padding pt-0 mt-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- section title start -->
+                        <div class="section-title text-center">
+                            <h2 class="title">latest blogs</h2>
+                            <p class="sub-title">There are latest blog posts</p>
+                        </div>
+                        <!-- section title start -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="blog-carousel-active slick-row-10 slick-arrow-style">
+                            <!-- blog post item start -->
+                            <div class="blog-post-item">
+                                <figure class="blog-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{{ asset('assets/clients/img/blog/blog-img1.jpg') }}" alt="blog image">
+                                    </a>
+                                </figure>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    </div>
+                                    <h5 class="blog-title">
+                                        <a href="blog-details.html">Celebrity Daughter Opens Up About Having Her Eye Color
+                                            Changed</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- blog post item end -->
+
+                            <!-- blog post item start -->
+                            <div class="blog-post-item">
+                                <figure class="blog-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{{ asset('assets/clients/img/blog/blog-img2.jpg') }}" alt="blog image">
+                                    </a>
+                                </figure>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    </div>
+                                    <h5 class="blog-title">
+                                        <a href="blog-details.html">Children Left Home Alone For 4 Days In TV series
+                                            Experiment</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- blog post item end -->
+
+                            <!-- blog post item start -->
+                            <div class="blog-post-item">
+                                <figure class="blog-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{{ asset('assets/clients/img/blog/blog-img3.jpg') }}" alt="blog image">
+                                    </a>
+                                </figure>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    </div>
+                                    <h5 class="blog-title">
+                                        <a href="blog-details.html">Lotto Winner Offering Up Money To Any Man That Will
+                                            Date Her</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- blog post item end -->
+
+                            <!-- blog post item start -->
+                            <div class="blog-post-item">
+                                <figure class="blog-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{{ asset('assets/clients/img/blog/blog-img4.jpg') }}" alt="blog image">
+                                    </a>
+                                </figure>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    </div>
+                                    <h5 class="blog-title">
+                                        <a href="blog-details.html">People are Willing Lie When Comes Money, According to
+                                            Research</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- blog post item end -->
+
+                            <!-- blog post item start -->
+                            <div class="blog-post-item">
+                                <figure class="blog-thumb">
+                                    <a href="blog-details.html">
+                                        <img src="{{ asset('assets/clients/img/blog/blog-img5.jpg') }}" alt="blog image">
+                                    </a>
+                                </figure>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p>25/03/2019 | <a href="#">Corano</a></p>
+                                    </div>
+                                    <h5 class="blog-title">
+                                        <a href="blog-details.html">romantic Love Stories Of Hollywoodâ€™s Biggest
+                                            Celebrities</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- blog post item end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- latest blog area end -->
+
+        <!-- brand logo area start -->
+        <div class="brand-logo section-padding pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="brand-logo-carousel slick-row-10 slick-arrow-style">
+                            <!-- single brand start -->
+                            <div class="brand-item">
                                 <a href="#">
-                                    <img src="assets/img/banner/sidebar-banner.jpg" alt="">
+                                    <img src="{{ asset('assets/clients/img/brand/1.png') }}" alt="">
                                 </a>
                             </div>
-                        </div>
-                        <!-- single sidebar end -->
-                    </aside>
-                </div>
-                <!-- sidebar area end -->
+                            <!-- single brand end -->
 
-                <!-- shop main wrapper start -->
-                <div class="col-lg-9 order-1 order-lg-2">
-                    <div class="shop-product-wrapper">
-                        <!-- shop product top wrap start -->
-                        <div class="shop-top-bar">
-                            <div class="row align-items-center">
-                                <div class="col-lg-7 col-md-6 order-2 order-md-1">
-                                    <div class="top-bar-left">
-                                        <div class="product-view-mode">
-                                            <a class="active" href="#" data-target="grid-view" data-bs-toggle="tooltip" title="Grid View"><i class="fa fa-th"></i></a>
-                                            <a href="#" data-target="list-view" data-bs-toggle="tooltip" title="List View"><i class="fa fa-list"></i></a>
-                                        </div>
-                                        <div class="product-amount">
-                                            <p>Showing 1–16 of 21 results</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5 col-md-6 order-1 order-md-2">
-                                    <div class="top-bar-right">
-                                        <div class="product-short">
-                                            <p>Sort By : </p>
-                                            <select class="nice-select" name="sortby">
-                                                <option value="trending">Relevance</option>
-                                                <option value="sales">Name (A - Z)</option>
-                                                <option value="sales">Name (Z - A)</option>
-                                                <option value="rating">Price (Low &gt; High)</option>
-                                                <option value="date">Rating (Lowest)</option>
-                                                <option value="price-asc">Model (A - Z)</option>
-                                                <option value="price-asc">Model (Z - A)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                            <!-- single brand start -->
+                            <div class="brand-item">
+                                <a href="#">
+                                    <img src="{{ asset('assets/clients/img/brand/2.png') }}" alt="">
+                                </a>
                             </div>
-                        </div>
-                        <!-- shop product top wrap start -->
+                            <!-- single brand end -->
 
-                        <!-- product item list wrapper start -->
-                        <div class="shop-product-wrap grid-view row mbn-30">
-                            <!-- product single item start -->
-                            <div class="col-md-4 col-sm-6">
-                                <!-- product grid start -->
-                                <div class="product-item">
-                                    <figure class="product-thumb">
-                                        <a href="product-details.html">
-                                            <img class="" src="{{asset('assets/clients/img/product/product-1.jpg')}}" alt="product">
-                                        </a>
-                                        <div class="product-badge">
-                                            <div class="product-label new">
-                                                <span>new</span>
-                                            </div>
-                                            <div class="product-label discount">
-                                                <span>10%</span>
-                                            </div>
-                                        </div>
-                                        <div class="button-group">
-                                            <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                            <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
-                                        </div>
-                                        <div class="cart-hover">
-                                            <button class="btn btn-cart">add to cart</button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-caption text-center">
-                                        <div class="product-identity">
-                                            <p class="manufacturer-name"><a href="product-details.html">Platinum</a></p>
-                                        </div>
-                                        <ul class="color-categories">
-                                            <li>
-                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-darktan" href="#" title="Darktan"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-grey" href="#" title="Grey"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-brown" href="#" title="Brown"></a>
-                                            </li>
-                                        </ul>
-                                        <h6 class="product-name">
-                                            <a href="product-details.html">Perfect Diamond Jewelry</a>
-                                        </h6>
-                                        <div class="price-box">
-                                            <span class="price-regular">$60.00</span>
-                                            <span class="price-old"><del>$70.00</del></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- product grid end -->
-
-                                <!-- product list item end -->
-                                <div class="product-list-item">
-                                    <figure class="product-thumb">
-                                        <a href="product-details.html">
-                                            <img class="pri-img" src="assets/img/product/product-1.jpg" alt="product">
-                                            <img class="sec-img" src="assets/img/product/product-18.jpg" alt="product">
-                                        </a>
-                                        <div class="product-badge">
-                                            <div class="product-label new">
-                                                <span>new</span>
-                                            </div>
-                                            <div class="product-label discount">
-                                                <span>10%</span>
-                                            </div>
-                                        </div>
-                                        <div class="button-group">
-                                            <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                            <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
-                                        </div>
-                                        <div class="cart-hover">
-                                            <button class="btn btn-cart">add to cart</button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-content-list">
-                                        <div class="manufacturer-name">
-                                            <a href="product-details.html">Platinum</a>
-                                        </div>
-                                        <ul class="color-categories">
-                                            <li>
-                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-darktan" href="#" title="Darktan"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-grey" href="#" title="Grey"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-brown" href="#" title="Brown"></a>
-                                            </li>
-                                        </ul>
-
-                                        <h5 class="product-name"><a href="product-details.html">Perfect Diamond Jewelry</a></h5>
-                                        <div class="price-box">
-                                            <span class="price-regular">$50.00</span>
-                                            <span class="price-old"><del>$29.99</del></span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde perspiciatis
-                                            quod numquam, sit fugiat, deserunt ipsa mollitia sunt quam corporis ullam
-                                            rem, accusantium adipisci officia eaque.</p>
-                                    </div>
-                                </div>
-                                <!-- product list item end -->
+                            <!-- single brand start -->
+                            <div class="brand-item">
+                                <a href="#">
+                                    <img src="{{ asset('assets/clients/img/brand/3.png') }}" alt="">
+                                </a>
                             </div>
-                            <!-- product single item start -->
+                            <!-- single brand end -->
 
-                            <!-- product single item start -->
-                            <div class="col-md-4 col-sm-6">
-                                <!-- product grid start -->
-                                <div class="product-item">
-                                    <figure class="product-thumb">
-                                        <a href="product-details.html">
-                                            <img class="" src="{{asset('assets/clients/img/product/product-1.jpg')}}" alt="product">
-                                        </a>
-                                        <div class="product-badge">
-                                            <div class="product-label new">
-                                                <span>new</span>
-                                            </div>
-                                            <div class="product-label discount">
-                                                <span>10%</span>
-                                            </div>
-                                        </div>
-                                        <div class="button-group">
-                                            <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                            <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
-                                        </div>
-                                        <div class="cart-hover">
-                                            <button class="btn btn-cart">add to cart</button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-caption text-center">
-                                        <div class="product-identity">
-                                            <p class="manufacturer-name"><a href="product-details.html">Quickiin</a></p>
-                                        </div>
-                                        <ul class="color-categories">
-                                            <li>
-                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-darktan" href="#" title="Darktan"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-grey" href="#" title="Grey"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-brown" href="#" title="Brown"></a>
-                                            </li>
-                                        </ul>
-                                        <h6 class="product-name">
-                                            <a href="product-details.html">Handmade Golden Necklace</a>
-                                        </h6>
-                                        <div class="price-box">
-                                            <span class="price-regular">$60.00</span>
-                                            <span class="price-old"><del>$70.00</del></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- product grid end -->
-
-                                <!-- product list item end -->
-                                <div class="product-list-item">
-                                    <figure class="product-thumb">
-                                        <a href="product-details.html">
-                                            <img class="pri-img" src="assets/img/product/product-2.jpg" alt="product">
-                                            <img class="sec-img" src="assets/img/product/product-17.jpg" alt="product">
-                                        </a>
-                                        <div class="product-badge">
-                                            <div class="product-label new">
-                                                <span>new</span>
-                                            </div>
-                                            <div class="product-label discount">
-                                                <span>10%</span>
-                                            </div>
-                                        </div>
-                                        <div class="button-group">
-                                            <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                            <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
-                                        </div>
-                                        <div class="cart-hover">
-                                            <button class="btn btn-cart">add to cart</button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-content-list">
-                                        <div class="manufacturer-name">
-                                            <a href="product-details.html">Diamond</a>
-                                        </div>
-                                        <ul class="color-categories">
-                                            <li>
-                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-darktan" href="#" title="Darktan"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-grey" href="#" title="Grey"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-brown" href="#" title="Brown"></a>
-                                            </li>
-                                        </ul>
-
-                                        <h5 class="product-name"><a href="product-details.html">Handmade Golden Necklace</a></h5>
-                                        <div class="price-box">
-                                            <span class="price-regular">$50.00</span>
-                                            <span class="price-old"><del>$29.99</del></span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde perspiciatis
-                                            quod numquam, sit fugiat, deserunt ipsa mollitia sunt quam corporis ullam
-                                            rem, accusantium adipisci officia eaque.</p>
-                                    </div>
-                                </div>
-                                <!-- product list item end -->
+                            <!-- single brand start -->
+                            <div class="brand-item">
+                                <a href="#">
+                                    <img src="{{ asset('assets/clients/img/brand/4.png') }}" alt="">
+                                </a>
                             </div>
-                            <!-- product single item start -->
+                            <!-- single brand end -->
 
-                            <!-- product single item start -->
-                            <div class="col-md-4 col-sm-6">
-                                <!-- product grid start -->
-                                <div class="product-item">
-                                    <figure class="product-thumb">
-                                        <a href="product-details.html">
-                                            <img class="" src="{{asset('assets/clients/img/product/product-1.jpg')}}" alt="product">
-                                        </a>
-                                        <div class="product-badge">
-                                            <div class="product-label new">
-                                                <span>new</span>
-                                            </div>
-                                            <div class="product-label discount">
-                                                <span>10%</span>
-                                            </div>
-                                        </div>
-                                        <div class="button-group">
-                                            <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                            <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
-                                        </div>
-                                        <div class="cart-hover">
-                                            <button class="btn btn-cart">add to cart</button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-caption text-center">
-                                        <div class="product-identity">
-                                            <p class="manufacturer-name"><a href="product-details.html">Quickiin</a></p>
-                                        </div>
-                                        <ul class="color-categories">
-                                            <li>
-                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-darktan" href="#" title="Darktan"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-grey" href="#" title="Grey"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-brown" href="#" title="Brown"></a>
-                                            </li>
-                                        </ul>
-                                        <h6 class="product-name">
-                                            <a href="product-details.html">Diamond Exclusive Ornament</a>
-                                        </h6>
-                                        <div class="price-box">
-                                            <span class="price-regular">$60.00</span>
-                                            <span class="price-old"><del>$70.00</del></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- product grid end -->
-
-                                <!-- product list item end -->
-                                <div class="product-list-item">
-                                    <figure class="product-thumb">
-                                        <a href="product-details.html">
-                                            <img class="pri-img" src="assets/img/product/product-3.jpg" alt="product">
-                                            <img class="sec-img" src="assets/img/product/product-16.jpg" alt="product">
-                                        </a>
-                                        <div class="product-badge">
-                                            <div class="product-label new">
-                                                <span>new</span>
-                                            </div>
-                                            <div class="product-label discount">
-                                                <span>10%</span>
-                                            </div>
-                                        </div>
-                                        <div class="button-group">
-                                            <a href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="pe-7s-like"></i></a>
-                                            <a href="compare.html" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Compare"><i class="pe-7s-refresh-2"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view"><span data-bs-toggle="tooltip" data-bs-placement="left" title="Quick View"><i class="pe-7s-search"></i></span></a>
-                                        </div>
-                                        <div class="cart-hover">
-                                            <button class="btn btn-cart">add to cart</button>
-                                        </div>
-                                    </figure>
-                                    <div class="product-content-list">
-                                        <div class="manufacturer-name">
-                                            <a href="product-details.html">Quickiin</a>
-                                        </div>
-                                        <ul class="color-categories">
-                                            <li>
-                                                <a class="c-lightblue" href="#" title="LightSteelblue"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-darktan" href="#" title="Darktan"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-grey" href="#" title="Grey"></a>
-                                            </li>
-                                            <li>
-                                                <a class="c-brown" href="#" title="Brown"></a>
-                                            </li>
-                                        </ul>
-
-                                        <h5 class="product-name"><a href="product-details.html">Diamond Exclusive Ornament</a></h5>
-                                        <div class="price-box">
-                                            <span class="price-regular">$50.00</span>
-                                            <span class="price-old"><del>$29.99</del></span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde perspiciatis
-                                            quod numquam, sit fugiat, deserunt ipsa mollitia sunt quam corporis ullam
-                                            rem, accusantium adipisci officia eaque.</p>
-                                    </div>
-                                </div>
-                                <!-- product list item end -->
+                            <!-- single brand start -->
+                            <div class="brand-item">
+                                <a href="#">
+                                    <img src="{{ asset('assets/clients/img/brand/5.png') }}" alt="">
+                                </a>
                             </div>
-                            <!-- product single item start -->
+                            <!-- single brand end -->
 
-                            <!-- product single item start -->
-
+                            <!-- single brand start -->
+                            <div class="brand-item">
+                                <a href="#">
+                                    <img src="{{ asset('assets/clients/img/brand/6.png') }}" alt="">
+                                </a>
+                            </div>
+                            <!-- single brand end -->
                         </div>
-                        <!-- product item list wrapper end -->
-
-                        <!-- start pagination area -->
-                        <div class="paginatoin-area text-center">
-                            <ul class="pagination-box">
-                                <li><a class="previous" href="#"><i class="pe-7s-angle-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a class="next" href="#"><i class="pe-7s-angle-right"></i></a></li>
-                            </ul>
-                        </div>
-                        <!-- end pagination area -->
                     </div>
                 </div>
-                <!-- shop main wrapper end -->
             </div>
         </div>
-    </div>
-    <!-- page main wrapper end -->
-</main>
+        <!-- brand logo area end -->
+    </main>
 @endsection
 
 @section('js')
-    
 @endsection
