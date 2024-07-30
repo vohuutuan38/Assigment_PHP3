@@ -55,31 +55,54 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($cart as $item)
-                                                <tr data-id="{{ $item['id'] }}">
-                                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                src="{{ asset('storage/' . $item['avatar']) }}"
-                                                                alt="Product" /></a></td>
-                                                    <td>{{ $item['name'] }}</td>
-                                                    <td>${{ number_format($item['price']) }}</td>
-                                                    <td>
-                                                        <div class="quantity">
-                                                            <div class="pro-qty">
-                                                                <input type="number" name="quantities[{{ $item['id'] }}]"
-                                                                    value="{{ $item['quantity'] }}" min="1">
-                                                            </div>
+                                            @php
+                                                $check = 0;
+                                            @endphp
+                                            @foreach ($cart as $key => $item)
+                                                @php
+                                                    $check += 1;
+                                                @endphp
+                                                {{-- <tr data-id="{{ $item['id'] }}"> --}}
+                                                {{-- <td>{{ $cart[0] }}</td> --}}
+                                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
+                                                            src="{{ asset('storage/' . $item['avatar']) }}"
+                                                            alt="Product" /></a></td>
+                                                <td>{{ $item['name'] }}</td>
+                                                <td>${{ number_format($item['price']) }}</td>
+                                                <td>
+                                                    <div class="quantity">
+                                                        <div class="pro-qty">
+                                                            <input type="number" name="quantities[{{ $item['id'] }}]"
+                                                                value="{{ $item['quantity'] }}" min="1">
                                                         </div>
-                                                    </td>
-                                                    <td class="pro-subtotal" data-price="{{ $item['price'] }}">
-                                                        ${{ number_format($item['quantity'] * $item['price']) }}
-                                                    </td>
-                                                    <td class="pro-remove">
-                                                        <form action="{{ route('cart.remove', $item['id']) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            <button type="submit"><i class="fa fa-trash-o"></i></button>
-                                                        </form>
-                                                    </td>
+                                                    </div>
+                                                </td>
+                                                <td class="pro-subtotal" data-price="{{ $item['price'] }}">
+                                                    ${{ number_format($item['quantity'] * $item['price']) }}
+                                                </td>
+                                                <td class="pro-remove">
+                                                    <div>
+                                                        @if ($check == 1)
+                                                            <form action="{{ route('cart.remove', $item['id']) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                            </form>
+                                                            <form action="{{ route('cart.remove', $item['id']) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <button type="submit"><i
+                                                                        class="fa fa-trash-o"></i></button>
+                                                            </form>
+                                                        @else
+                                                            <form action="{{ route('cart.remove', $item['id']) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <button type="submit"><i
+                                                                        class="fa fa-trash-o"></i></button>
+                                                            </form>
+                                                        @endif
+                                                    </div>
+                                                </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

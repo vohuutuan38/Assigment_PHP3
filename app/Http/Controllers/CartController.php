@@ -16,7 +16,6 @@ class CartController extends Controller
             $total = (int)$item['quantity'] * $item['price'];
             $sum += $total;
         }
-        // dd($sum);
         return view('clients.cart.index', compact('cart', 'danhMuc', 'sum'));
     }
 
@@ -63,13 +62,14 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
-    public function remove($id = 1)
+    public function remove($id)
     {
         $cart = session()->get('cart', []);
-
+        // dd($cart);
         if (isset($cart[$id])) {
             unset($cart[$id]);
             session()->put('cart', $cart);
+            // session()->put('cart', []);
         }
 
         return redirect()->route('cart.index');
